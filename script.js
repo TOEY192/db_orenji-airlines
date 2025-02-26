@@ -32,12 +32,12 @@ function closeLoginModal() {
 
 
 // ดักจับการ submit ฟอร์ม
-document.getElementById('myForm').addEventListener('submit', function(event) {
+document.getElementById('login-container').addEventListener('submit', function(event) {
     event.preventDefault();  // ป้องกันการ submit ฟอร์มตามปกติ
 
     // รับค่าจากฟอร์ม
-    const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
     // ส่งข้อมูลไปยัง API ด้วย fetch
     fetch('https://db-orenji-airlines.onrender.com/login', {
@@ -46,8 +46,8 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
             'Content-Type': 'application/json',  // ระบุว่าเรากำลังส่งข้อมูลในรูปแบบ JSON
         },
         body: JSON.stringify({
-            name: name,
-            email: email
+            email: email,
+            password: password
         })
     })
     .then(response => response.json())  // รับผลลัพธ์เป็น JSON
