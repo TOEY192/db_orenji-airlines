@@ -36,8 +36,8 @@ document.getElementById('login-container').addEventListener('submit', function(e
     event.preventDefault();  // ป้องกันการ submit ฟอร์มตามปกติ
 
     // รับค่าจากฟอร์ม
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('email-login').value;
+    const password = document.getElementById('password-login').value;
 
     // ส่งข้อมูลไปยัง API ด้วย fetch
     fetch('https://db-orenji-airlines.onrender.com/login', {
@@ -74,9 +74,9 @@ document.getElementById('register-container').addEventListener('submit', functio
     event.preventDefault();  // ป้องกันการ submit ฟอร์มตามปกติ
 
     // รับค่าจากฟอร์ม
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('username-register').value;
+    const email = document.getElementById('email-register').value;
+    const password = document.getElementById('password-register').value;
 
     // ส่งข้อมูลไปยัง API ด้วย fetch
     fetch('https://db-orenji-airlines.onrender.com/register', {
