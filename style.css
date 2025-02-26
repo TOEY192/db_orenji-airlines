@@ -34,7 +34,8 @@ body {
 }
 
 .login-btn,
-.register-btn {
+.register-btn,
+.logout-btn {
     padding: 10px clamp(15px, 3vw, 25px);
     border-radius: 20px;
     cursor: pointer;
@@ -45,7 +46,12 @@ body {
     flex-shrink: 0;
 }
 
-.login-btn {
+.logout-btn {
+    display: none;
+}
+
+.login-btn, 
+.logout-btn {
     background-color: white;
     color: rgb(223, 167, 84);
     border: 2px solid white;
@@ -57,7 +63,8 @@ body {
     border: 2px solid white;
 }
 
-.login-btn:hover {
+.login-btn:hover,
+.logout-btn:hover {
     background-color: rgb(223, 167, 84);
     color: white;
 }
