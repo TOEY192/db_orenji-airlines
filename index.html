@@ -1,25 +1,56 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web API Example</title>
+  <title>My App</title>
+  <link rel="stylesheet" href="/style.css"> <!-- คำสั่งนี้จะโหลดไฟล์ style.css -->
 </head>
 <body>
-  <h1>API Example</h1>
-  <button id="getDataBtn">Get Data</button>
-  <div id="dataDisplay"></div>
+  <nav class="navbar">
+    <div class="logo">OrenjiAirlines</div>
+    <div class="nav-buttons">
+        <a href="#" class="register-btn" onclick="openRegisterModal()">register</a>
+        <a href="#" class="login-btn" onclick="openLoginModal()">login</a>
+    </div>
+</nav>
 
-  <script>
-    document.getElementById('getDataBtn').addEventListener('click', function () {
-      fetch('https://db-orenji-airlines.onrender.com/users')
-        .then(response => response.json())
-        .then(data => {
-          const dataDisplay = document.getElementById('dataDisplay');
-          dataDisplay.innerHTML = JSON.stringify(data, null, 2); // แสดงข้อมูลจาก API
-        })
-        .catch(error => console.error('Error:', error));
-    });
-  </script>
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeRegisterModal()">&times;</span>
+        <h2>Register</h2>
+        <form class="register-container">
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeLoginModal()">&times;</span>
+        <h2>Login</h2>
+        <form class="login-container">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" Login>Login</button>
+        </form>
+    </div>
+</div>
+
+<div class="services">
+    <div class="services-content">
+        <div class="services-container">
+            <a href="#" class="airplane-btn">Book Flight</a>
+            <a href="#" class="hotel-btn">Book Hotel</a>
+            <a href="#" class="rentcar-btn">Rent Car</a>
+        </div>
+    </div>
+</div>
+
+  <script src="/app.js"></script> <!-- คำสั่งนี้จะโหลดไฟล์ app.js -->
 </body>
 </html>
