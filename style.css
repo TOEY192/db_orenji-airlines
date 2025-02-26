@@ -1,6 +1,6 @@
 :root {
-    --main_color: var(--main_color);
-    --white: var(--white);
+    --main_color: rgb(223, 167, 84);
+    --white: white;
     --border_btn: 2px solid white;
 }
 
