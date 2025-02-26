@@ -108,7 +108,7 @@ document.getElementById('register-container').addEventListener('submit', functio
     });
 });
 
-document.getElementById('logoutBtn').addEventListener('click', onLogout);
+document.getElementById('logout-btn').addEventListener('click', onLogout);
 
 // เมื่อผู้ใช้ล็อกอิน
 function onLoginSuccess() {
