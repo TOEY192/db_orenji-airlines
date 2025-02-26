@@ -12,8 +12,16 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json()); // ใช้ body-parser เพื่ออ่าน JSON จาก request
 
+app.use(cors());
+
 // สร้างการเชื่อมต่อกับ MySQL
-const connection = mysql.createConnection(process.env.DATABASE_URL);
+const connection = mysql.createConnection({
+    host: "trolley.proxy.rlwy.net",
+    user: "phutawan",
+    password: "group13",
+    database: "db_flightbooking",
+    port: 18125
+});
 
 // เชื่อมต่อกับฐานข้อมูล
 connection.connect((err) => {
