@@ -1,0 +1,206 @@
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 80px;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    background-color: rgb(223, 167, 84);
+    padding: 15px clamp(20px, 5vw, 30px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: clamp(10px, 2vw, 15px);
+    margin-left: auto;
+}
+
+.login-btn,
+.register-btn {
+    padding: 10px clamp(15px, 3vw, 25px);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.login-btn {
+    background-color: white;
+    color: rgb(223, 167, 84);
+    border: 2px solid white;
+}
+
+.register-btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.login-btn:hover {
+    background-color: rgb(223, 167, 84);
+    color: white;
+}
+
+.register-btn:hover {
+    background-color: white;
+    color: rgb(223, 167, 84);
+}
+
+/**/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 100px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.5 ease;
+}
+
+.modal-content {
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+    border: 1px solid #888;
+    transform: translateY(-100px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.register-container input,
+.register-container button {
+    width: 70%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.register-container button {
+    background-color: rgb(223, 167, 84);
+    color: white;
+    cursor: pointer;
+}
+
+.register-container button:hover {
+    background-color: #e4b17e;
+}
+
+.login-container input,
+.login-container button {
+    width: 70%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login-container button {
+    background-color: rgb(223, 167, 84);
+    color: white;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #e4b17e;
+}
+
+.services {
+    display: flex;
+    padding: 20px;
+    padding-top: 0%;
+    box-sizing: border-box;
+}
+
+.services-content{
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.airplane-btn, .hotel-btn, .rentcar-btn {
+    padding: 12px 24px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+    border: 2px solid rgb(223, 167, 84);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: clamp(12px, 1.2vw, 16px);
+    width: clamp(80px, 30%, 30px);
+    
+}
+
+.airplane-btn:hover {
+    background-color: white;
+    color: rgb(223, 167, 84);
+    border: 2px solid rgb(223, 167, 84);
+}
+
+.hotel-btn:hover {
+    background-color: white;
+    color: rgb(223, 167, 84);
+    border: 2px solid rgb(223, 167, 84);
+}
+
+.rentcar-btn:hover {
+    background-color: white;
+    color: rgb(223, 167, 84);
+    border: 2px solid rgb(223, 167, 84);
+}
