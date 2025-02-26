@@ -5,6 +5,13 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+// ใช้สำหรับการ LOGIN
+// npm install bcrypt
+const bcrypt = require('bcryptjs'); // ใช้ bcrypt สำหรับเข้ารหัสรหัสผ่าน
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json()); // ใช้ body-parser เพื่ออ่าน JSON จาก request
+
 // สร้างการเชื่อมต่อกับ MySQL
 const connection = mysql.createConnection(process.env.DATABASE_URL);
 
