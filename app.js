@@ -27,11 +27,11 @@ connection.connect((err) => {
 });
 
 // Serve static files (HTML, CSS, JS, images)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static((__dirname)));
 
 // Route สำหรับหน้าแรก
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(process.env.PORT || 3000);
