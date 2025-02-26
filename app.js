@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 app.listen(process.env.PORT || 3000);
 
 app.get("/users", (req, res) => {
-    connection.query("SELECT * FROM Users", (err, results) => {
+    connection.query("SELECT * FROM users", (err, results) => {
         if (err) {
             return res.status(500).send(err);
         }
