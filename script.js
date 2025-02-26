@@ -53,10 +53,10 @@ document.getElementById('login-container').addEventListener('submit', function(e
     .then(response => response.json())  // รับผลลัพธ์เป็น JSON
     .then(data => {
         console.log('Success:', data);
-        alert('Data sent successfully!');
+        alert('Login successfully!');
     })
     .catch((error) => {
         console.error('Error:', error);
-        alert('Error sending data');
+        alert('Error Login');
     });
 });
