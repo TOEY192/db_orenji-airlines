@@ -29,3 +29,34 @@ function closeLoginModal() {
         document.getElementById("loginModal").style.display = "none";
     }, 500);
 }
+
+
+// ดักจับการ submit ฟอร์ม
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // ป้องกันการ submit ฟอร์มตามปกติ
+
+    // รับค่าจากฟอร์ม
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    // ส่งข้อมูลไปยัง API ด้วย fetch
+    fetch('https://db-orenji-airlines.onrender.com/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',  // ระบุว่าเรากำลังส่งข้อมูลในรูปแบบ JSON
+        },
+        body: JSON.stringify({
+            name: name,
+            email: email
+        })
+    })
+    .then(response => response.json())  // รับผลลัพธ์เป็น JSON
+    .then(data => {
+        console.log('Success:', data);
+        alert('Data sent successfully!');
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Error sending data');
+    });
+});
