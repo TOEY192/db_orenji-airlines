@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web API Example</title>
+</head>
+<body>
+  <h1>API Example</h1>
+  <button id="getDataBtn">Get Data</button>
+  <div id="dataDisplay"></div>
+
+  <script>
+    document.getElementById('getDataBtn').addEventListener('click', function () {
+      fetch('https://db-orenji-airlines.onrender.com/users')
+        .then(response => response.json())
+        .then(data => {
+          const dataDisplay = document.getElementById('dataDisplay');
+          dataDisplay.innerHTML = JSON.stringify(data, null, 2); // แสดงข้อมูลจาก API
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
