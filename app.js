@@ -49,6 +49,8 @@ app.get("/users", (req, res) => {
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
+    console.log(email);
+    console.log(password);
     // ตรวจสอบผู้ใช้จากฐานข้อมูล
     connection.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
         if (err) {
