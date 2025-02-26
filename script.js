@@ -113,11 +113,13 @@ document.getElementById('logout-btn').addEventListener('click', onLogout);
 // เมื่อผู้ใช้ล็อกอิน
 function onLoginSuccess() {
     document.cookie = "isLoggedIn=true; path=/"; // เก็บสถานะใน cookie
+    location.reload();
 }
 
 // เมื่อผู้ใช้ logout
 function onLogout() {
     document.cookie = "isLoggedIn=false; path=/"; // ลบสถานะจาก cookie
+    location.reload();
 }
 
 // ตรวจสอบสถานะการล็อกอินจาก cookie
