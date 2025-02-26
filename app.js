@@ -86,6 +86,7 @@ app.post("/register", (req, res) => {
 
         connection.query("INSERT INTO Users (username, email, password) VALUES (?, ?, ?)", [username, email, hashedPassword], (err, results) => {
             if (err) {
+                console.log('register failed')
                 connection.query("SELECT COUNT(*) AS user_count FROM Users", (err, results) => {
                     if (err) {
                         return res.status(500).send(err);
