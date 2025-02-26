@@ -66,3 +66,41 @@ document.getElementById('login-container').addEventListener('submit', function(e
         alert('Error Login');
     });
 });
+
+// ดักจับการ submit ฟอร์ม
+document.getElementById('register-container').addEventListener('submit', function(event) {
+    event.preventDefault();  // ป้องกันการ submit ฟอร์มตามปกติ
+
+    // รับค่าจากฟอร์ม
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // ส่งข้อมูลไปยัง API ด้วย fetch
+    fetch('https://db-orenji-airlines.onrender.com/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',  // ระบุว่าเรากำลังส่งข้อมูลในรูปแบบ JSON
+        },
+        body: JSON.stringify({
+            username: username,
+            email: email,
+            password: password
+        })
+    })
+    .then(response => response.json())  // รับผลลัพธ์เป็น JSON
+    .then(data => {
+        console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
+        if (data.message === 'User registered successfully') {
+            console.log('Register successful:', data);  // เมื่อข้อมูลถูกต้อง
+            alert('Register successful!');
+            closeLoginModal();
+        } else {
+            alert('Invalid email or password');
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Error Login');
+    });
+});
