@@ -30,6 +30,7 @@ function closeLoginModal() {
     }, 500);
 }
 
+let isLoggedIn = false;
 
 // ดักจับการ submit ฟอร์ม
 document.getElementById('login-container').addEventListener('submit', function(event) {
@@ -57,9 +58,8 @@ document.getElementById('login-container').addEventListener('submit', function(e
             alert('Invalid email or password');
         } else {
             console.log('Login successful:', data);  // เมื่อข้อมูลถูกต้อง
-            document.getElementById('login-btn').style.display = 'none';
-            document.getElementById('register-btn').style.display = 'none';
             alert('Login successful!');
+            onLoginSuccess();
             closeLoginModal();
         }
     })
@@ -95,9 +95,8 @@ document.getElementById('register-container').addEventListener('submit', functio
         console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
         if (data.message === 'User registered successfully') {
             console.log('Register successful:', data);  // เมื่อข้อมูลถูกต้อง
-            document.getElementById('login-btn').style.display = 'none';
-            document.getElementById('register-btn').style.display = 'none';
             alert('Register successful!');
+            onLoginSuccess();
             closeRegisterModal();
         } else {
             alert('Invalid email or password');
@@ -108,3 +107,37 @@ document.getElementById('register-container').addEventListener('submit', functio
         alert('Error Login');
     });
 });
+
+document.getElementById('logoutBtn').addEventListener('click', onLogout);
+
+// เมื่อผู้ใช้ล็อกอิน
+function onLoginSuccess() {
+    document.cookie = "isLoggedIn=true; path=/"; // เก็บสถานะใน cookie
+}
+
+// เมื่อผู้ใช้ logout
+function onLogout() {
+    document.cookie = "isLoggedIn=false; path=/"; // ลบสถานะจาก cookie
+}
+
+// ตรวจสอบสถานะการล็อกอินจาก cookie
+window.onload = function() {
+    const cookies = document.cookie.split(';');
+    let isLoggedIn = false;
+    cookies.forEach(cookie => {
+        if (cookie.trim().startsWith('isLoggedIn=true')) {
+            isLoggedIn = true;
+        }
+    });
+
+    if (isLoggedIn) {
+        document.getElementById('loginBtn').style.display = 'none';
+        document.getElementById('registerBtn').style.display = 'none';
+        document.getElementById('logoutBtn').style.display = 'block';
+    }
+    else {
+        document.getElementById('loginBtn').style.display = 'block';
+        document.getElementById('registerBtn').style.display = 'block';
+        document.getElementById('logoutBtn').style.display = 'none';
+    }
+};
