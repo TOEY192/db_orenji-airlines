@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3306);
 
 app.get("/users", (req, res) => {
     connection.query("SELECT * FROM users", (err, results) => {
