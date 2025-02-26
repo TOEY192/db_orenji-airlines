@@ -52,8 +52,14 @@ document.getElementById('login-container').addEventListener('submit', function(e
     })
     .then(response => response.json())  // รับผลลัพธ์เป็น JSON
     .then(data => {
-        console.log('Success:', data);
-        alert('Login successfully!');
+        console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
+        if (data.message === 'Invalid email or password') {
+            alert('Invalid email or password');
+        } else {
+            console.log('Login successful:', data);  // เมื่อข้อมูลถูกต้อง
+            alert('Login successful!');
+            closeLoginModal();
+        }
     })
     .catch((error) => {
         console.error('Error:', error);
