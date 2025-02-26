@@ -46,7 +46,7 @@ app.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
     // ตรวจสอบผู้ใช้จากฐานข้อมูล
-    connection.query("SELECT * FROM Users WHERE email = ?", [email], (err, results) => {
+    connection.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
         if (err) {
             return res.status(500).send(err);
         }
@@ -86,16 +86,16 @@ app.post("/register", (req, res) => {
             return res.status(500).send(err);
         }
 
-        connection.query("INSERT INTO Users (username, email, password) VALUES (?, ?, ?)", [username, email, hashedPassword], (err, results) => {
+        connection.query("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", [username, email, hashedPassword], (err, results) => {
             if (err) {
                 console.log('register failed')
-                connection.query("SELECT COUNT(*) AS user_count FROM Users", (err, results) => {
+                connection.query("SELECT COUNT(*) AS user_count FROM users", (err, results) => {
                     if (err) {
                         return res.status(500).send(err);
                     }
                     
                     const userCount = results[0].user_count;
-                    connection.query("ALTER TABLE Users AUTO_INCREMENT = ?", [userCount], (err, results) => {
+                    connection.query("ALTER TABLE users AUTO_INCREMENT = ?", [userCount], (err, results) => {
                         if (err) {
                             return res.status(500).send(err);
                         }
