@@ -131,13 +131,13 @@ window.onload = function() {
     });
 
     if (isLoggedIn) {
-        document.getElementById('loginBtn').style.display = 'none';
-        document.getElementById('registerBtn').style.display = 'none';
-        document.getElementById('logoutBtn').style.display = 'block';
+        document.getElementById('login-btn').style.display = 'none';
+        document.getElementById('register-btn').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'block';
     }
     else {
-        document.getElementById('loginBtn').style.display = 'block';
-        document.getElementById('registerBtn').style.display = 'block';
-        document.getElementById('logoutBtn').style.display = 'none';
+        document.getElementById('login-btn').style.display = 'block';
+        document.getElementById('register-btn').style.display = 'block';
+        document.getElementById('logout-btn').style.display = 'none';
     }
 };
