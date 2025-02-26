@@ -26,9 +26,13 @@ connection.connect((err) => {
     console.log("Connected to MySQL!");
 });
 
+// Serve static files (HTML, CSS, JS, images)
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Route สำหรับหน้าแรก
 app.get('/', (req, res) => {
-    res.json({msg: "test"})
-})
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.listen(process.env.PORT || 3000);
 
