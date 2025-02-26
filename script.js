@@ -57,6 +57,8 @@ document.getElementById('login-container').addEventListener('submit', function(e
             alert('Invalid email or password');
         } else {
             console.log('Login successful:', data);  // เมื่อข้อมูลถูกต้อง
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('registerModal').style.display = 'none';
             alert('Login successful!');
             closeLoginModal();
         }
@@ -93,6 +95,8 @@ document.getElementById('register-container').addEventListener('submit', functio
         console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
         if (data.message === 'User registered successfully') {
             console.log('Register successful:', data);  // เมื่อข้อมูลถูกต้อง
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('registerModal').style.display = 'none';
             alert('Register successful!');
             closeRegisterModal();
         } else {
