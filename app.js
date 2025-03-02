@@ -149,7 +149,7 @@ app.post('/edit-info', authenticateToken, (req, res) => {
         if (err) {
             return res.status(500).send(err);
         }
-        res.json({ message: 'User info updated successfully' ,
+        res.json({ message: 'User edit info successfully' ,
             username: username
         });
     });
