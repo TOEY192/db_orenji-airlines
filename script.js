@@ -95,7 +95,8 @@ document.getElementById('register-container').addEventListener('submit', functio
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json();  // แปลง Response เป็น JSON
+            console.log(response.json());
+            return response.json();
         })
         .then(data => {
             console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
