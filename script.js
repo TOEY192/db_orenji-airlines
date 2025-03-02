@@ -91,11 +91,6 @@ document.getElementById('register-container').addEventListener('submit', functio
         })
     })
         .then(response => {
-            // ตรวจสอบว่า Response สำเร็จหรือไม่
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            console.log(response.json());
             return response.json();
         })
         .then(data => {

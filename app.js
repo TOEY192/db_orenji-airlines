@@ -83,8 +83,6 @@ app.post("/login", async (req, res) => {
     });
 })
 
-const jwt = require('jsonwebtoken');
-
 // REGISTER API
 app.post("/register", (req, res) => {
     const { username, email, password } = req.body;
@@ -101,37 +99,13 @@ app.post("/register", (req, res) => {
                 console.log('Register failed:', err);
                 return res.status(500).send({ error: 'Failed to register user' });
             }
-
-            // สร้าง JWT token
-            const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-            // ส่ง cookies ที่มี token
-            res.cookie("token", token, {
-                httpOnly: true,
-                secure: true,
-                sameSite: "Strict"
-            });
-
-            // ส่งข้อความยืนยันการลงทะเบียนสำเร็จ
             res.json({
                 message: "User registered successfully",
-                token: token  // ส่ง token กลับไปให้ client
             });
         });
     });
 });
 
-const authenticateToken = (req, res, next) => {
-    const token = req.header('Authorization')?.split(' ')[1];
-    if (!token) return res.status(401).json({ message: 'Access Denied' });
-
-    jwt.verify(token, 'your_secret_key', (err, user) => {
-        if (err) return res.status(403).json({ message: 'Invalid Token' });
-
-        req.user = user; // { username: "example_user" }
-        next();
-    });
-};
 
 app.post('/edit-info', authenticateToken, (req, res) => {
     const { first_name, last_name, passport_number } = req.body;
