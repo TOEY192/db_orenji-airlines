@@ -184,17 +184,59 @@ function moveSlide(direction) {
 }
 
 function openAdditionalInfoModal() {
-    document.getElementById('additionalInfoModal').style.display = "block";
+    document.getElementById("additionalInfoModal").style.display = "block";
+    setTimeout(() => {
+        document.getElementById("additionalInfoModal").style.opacity = 1;
+        document.querySelector("#additionalInfoModal .modal-content").style.opacity = 1;
+    }, 10);
 }
 
 function closeAdditionalInfoModal() {
-    document.getElementById('additionalInfoModal').style.display = "none";
+    document.getElementById("additionalInfoModal").style.opacity = 0;
+    document.querySelector("#additionalInfoModal .modal-content").style.opacity = 0;
+    setTimeout(() => {
+        document.getElementById("additionalInfoModal").style.display = "none";
+    }, 500);
 }
 
-document.getElementById('register-container').addEventListener('submit', function(e) {
-    e.preventDefault(); // ป้องกันการ submit แบบเดิม
-    // สามารถเช็คข้อมูลที่กรอกในฟอร์มได้ที่นี่
+then(data => {
+    if (data.message === 'User registered successfully') {
+        alert('Register successful!');
+        closeRegisterModal();
+        openAdditionalInfoModal(); // เปิด Modal ข้อมูลเพิ่มเติม
+    } else {
+        alert('Registration failed');
+    }
+})
 
-    // เมื่อการสมัครเสร็จสิ้น ให้เปิดฟอร์มข้อมูลเพิ่มเติม
-    openAdditionalInfoModal();
+document.getElementById('additional-info-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+    const fullName = document.getElementById('full-name').value;
+    const lastName = document.getElementById('last-name').value;
+    const passportNumber = document.getElementById('passport-number').value;
+
+    // ส่งข้อมูลไปยังเซิร์ฟเวอร์ (ตัวอย่าง endpoint)
+    fetch('https://db-orenji-airlines.onrender.com/update-profile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // ใส่ token การเข้าสู่ระบบหากจำเป็น
+        },
+        body: JSON.stringify({
+            fullName: fullName,
+            lastName: lastName,
+            passportNumber: passportNumber
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            onLoginSuccess(); // เข้าสู่ระบบหลังจากกรอกข้อมูลเสร็จ
+            closeAdditionalInfoModal();
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 });
