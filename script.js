@@ -143,3 +143,40 @@ window.onload = function () {
         document.getElementById('logout-btn').style.display = 'none';
     }
 }
+
+let currentIndex = 0;
+const images = document.querySelectorAll('.slider img');
+const totalImages = images.length;
+
+// ฟังก์ชันสำหรับเปลี่ยนภาพ
+function showNextImage() {
+    // ซ่อนภาพปัจจุบัน
+    images[currentIndex].classList.remove('active');
+
+    // คำนวณภาพถัดไป
+    currentIndex = (currentIndex + 1) % totalImages; // ใช้ % เพื่อให้มันวนกลับมาที่รูปแรก
+
+    // แสดงภาพใหม่
+    images[currentIndex].classList.add('active');
+}
+
+// แสดงภาพแรก
+images[currentIndex].classList.add('active');
+
+// เลื่อนรูปอัตโนมัติทุกๆ 6 วินาที (6000ms)
+setInterval(showNextImage, 6000);
+
+function moveSlide(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+    } else if (currentIndex >= images.length) {
+        currentIndex = 0;
+    }
+    images.forEach((img, index) => {
+        img.classList.remove('active');
+        if (index === currentIndex) {
+            img.classList.add('active');
+        }
+    });
+}
