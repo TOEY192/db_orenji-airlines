@@ -116,7 +116,6 @@ document.getElementById('register-container').addEventListener('submit', functio
                 alert('Register successful!');
                 closeRegisterModal();
                 openEditInfoModal();
-                onLoginSuccess();
                 const token = data.token;  // ดึง token จาก response
                 localStorage.setItem('token', token);  // บันทึก token ไว้ใช้งาน
             } else {
