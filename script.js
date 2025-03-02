@@ -1,4 +1,5 @@
 function openRegisterModal() {
+    document.getElementById('close-register').style.display = "block";
     document.getElementById("registerModal").style.display = "block";
     setTimeout(() => {
         document.getElementById("registerModal").style.opacity = 1;
@@ -7,6 +8,7 @@ function openRegisterModal() {
 }
 
 function closeRegisterModal() {
+    document.getElementById('close-register').style.display = "none";
     document.getElementById("registerModal").style.opacity = 0;
     document.querySelector("#registerModal .modal-content").style.opacity = 0;
     setTimeout(() => {
@@ -112,6 +114,7 @@ document.getElementById('register-container').addEventListener('submit', functio
 
 function openAdditionalInfoModal() {
     document.getElementById('register-container').style.display = "none";
+    document.getElementById('close-additional').style.display = "block";
     document.getElementById('additionalInfoModal').style.display = "block";
     document.getElementById('additionalInfoModal').addEventListener('submit', (event) => {
         event.preventDefault();
@@ -140,7 +143,7 @@ function openAdditionalInfoModal() {
         })
         .catch((error) => {
             console.error('Error:', error); 
-            alert('Registration failed. Please try again.', error);
+            alert('Registration failed. Please try again. EDIT INFO', error);
         });
 
     })
