@@ -90,42 +90,36 @@ app.post("/register", (req, res) => {
     const { username, email, password } = req.body;
 
     // เข้ารหัสรหัสผ่านและบันทึกลงในฐานข้อมูล
-    // จะทำการเข้ารหัสของรหัสผ่านเพื่อความปลอดภัย (hashedPassword)
     bcrypt.hash(password, 10, (err, hashedPassword) => {
         if (err) {
-            console.log('error');
-            return res.status(500).send(err);
+            console.log('Error hashing password:', err);
+            return res.status(500).send({ error: 'Error hashing password' });
         }
 
         connection.query("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", [username, email, hashedPassword], (err, results) => {
             if (err) {
-                console.log('register failed')
-                connection.query("SELECT COUNT(*) AS user_count FROM users", (err, results) => {
-                    if (err) {
-                        return res.status(500).send(err);
-                    }
-
-                    const userCount = results[0].user_count;
-                    connection.query("ALTER TABLE users AUTO_INCREMENT = ?", [userCount], (err, results) => {
-                        if (err) {
-                            return res.status(500).send(err);
-                        }
-                    })
-                })
-                return res.status(500).send(err);
+                console.log('Register failed:', err);
+                return res.status(500).send({ error: 'Failed to register user' });
             }
+
+            // สร้าง JWT token
             const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
+            // ส่ง cookies ที่มี token
             res.cookie("token", token, {
                 httpOnly: true,
                 secure: true,
                 sameSite: "Strict"
             });
 
-            res.json({ message: "User registered successfully" });
+            // ส่งข้อความยืนยันการลงทะเบียนสำเร็จ
+            res.json({
+                message: "User registered successfully",
+                token: token  // ส่ง token กลับไปให้ client
+            });
         });
     });
-})
+});
 
 const authenticateToken = (req, res, next) => {
     const token = req.header('Authorization')?.split(' ')[1];
