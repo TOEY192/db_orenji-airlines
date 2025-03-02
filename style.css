@@ -355,6 +355,7 @@ a {
 }
 
 .profile-btn {
+    align-content: center;
     font-size: 30px;
     color: #fff;
     margin-top: 10px;
@@ -368,6 +369,14 @@ a {
 .profile-btn:hover {
     color: #aaa;
     transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.fa-solid, .fas {
+    display: flex;
+}
+
+.fa-user::before {
+    align-content: center;
 }
 
 
