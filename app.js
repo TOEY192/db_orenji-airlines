@@ -143,6 +143,7 @@ app.post('/edit-info', authenticateToken, (req, res) => {
     const { first_name, last_name, passport_number } = req.body;
     const username = req.user.username;
 
+    console.log(username)
     const sql = 'UPDATE users SET firstName = ?, lastName = ?, passportNumber = ? WHERE username = ?';
     connection.query(sql, [first_name, last_name, passport_number, username], (err, results) => {
         if (err) {

@@ -156,7 +156,7 @@ document.getElementById('edit-info-container').addEventListener('submit', event 
         if (data.message === 'User edit info successfully') {
             console.log('edit info successful:', data);  // เมื่อข้อมูลถูกต้อง
             alert('Edit info successful!');
-            closeEditInfoModal()
+            // closeEditInfoModal()
             onLoginSuccess();
         } else {
             alert('Invalid email or password');
