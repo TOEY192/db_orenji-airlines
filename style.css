@@ -354,15 +354,15 @@ a {
     /* เพิ่มเงาเล็กน้อย */
 }
 
-.profile-btn {
+/* .profile-btn {
     font-size: 30px;
     color: #fff;
     margin-top: 10px;
     cursor: pointer;
-}
+} */
 
 #profile-btn {
-    display: none;
+    display: block;
 }
 
 .profile-btn:hover {
