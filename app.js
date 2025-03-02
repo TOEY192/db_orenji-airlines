@@ -107,20 +107,20 @@ app.post("/register", (req, res) => {
 });
 
 
-app.post('/edit-info', authenticateToken, (req, res) => {
-    const { first_name, last_name, passport_number } = req.body;
-    const username = req.user.username;
+// app.post('/edit-info', authenticateToken, (req, res) => {
+//     const { first_name, last_name, passport_number } = req.body;
+//     const username = req.user.username;
 
-    const sql = 'UPDATE users SET firstName = ?, lastName = ?, passportNumber = ? WHERE username = ?';
-    connection.query(sql, [first_name, last_name, passport_number, username], (err, results) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        res.json({ message: 'User info updated successfully' ,
-            username: username
-        });
-    });
-});
+//     const sql = 'UPDATE users SET firstName = ?, lastName = ?, passportNumber = ? WHERE username = ?';
+//     connection.query(sql, [first_name, last_name, passport_number, username], (err, results) => {
+//         if (err) {
+//             return res.status(500).send(err);
+//         }
+//         res.json({ message: 'User info updated successfully' ,
+//             username: username
+//         });
+//     });
+// });
 
 
 //ขั้นตอน booking เลือกว่าจะไปไหน แล้วเลือกจำนวนคน แล้วเลือกเที่ยวบิน และเลือกชั้น และราคาจะแสดออกมา
