@@ -102,15 +102,15 @@ app.post("/register", (req, res) => {
                 return res.status(500).send({ error: 'Failed to register user' });
             }
 
-             // สร้าง JWT token
-             const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            // สร้าง JWT token
+            const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-             // ส่ง cookies ที่มี token
-             res.cookie("token", token, {
-                 httpOnly: true,
-                 secure: true,
-                 sameSite: "Strict"
-             });
+            // ส่ง cookies ที่มี token
+            res.cookie("token", token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: "Strict"
+            });
 
             res.json({
                 message: "User registered successfully",
@@ -149,7 +149,8 @@ app.post('/edit-info', authenticateToken, (req, res) => {
         if (err) {
             return res.status(500).send(err);
         }
-        res.json({ message: 'User edit info successfully' ,
+        res.json({
+            message: 'User edit info successfully',
             username: username
         });
     });
@@ -169,12 +170,24 @@ app.post('/booking', (req, res) => {
     })
 })
 
-    .get('/show-airports', (req, res) => {
-        const sql = 'SELECT * FROM Airports'
-        connection.query(sql, (err, results) => {
-            if (err) {
-                return res.status(500).send(err);
-            }
-            res.json(results);
-        })
+app.get('/show-airports', (req, res) => {
+    const sql = 'SELECT * FROM Airports'
+    connection.query(sql, (err, results) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.json(results);
     })
+})
+
+app.get("/search", (req, res) => {
+    let searchQuery = req.query.q;
+    let sql = "SELECT * FROM products WHERE name LIKE ? LIMIT 10"; // จำกัดผลลัพธ์
+    db.query(sql, [`%${searchQuery}%`], (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: "Database error" });
+        }
+        res.json(results);
+    });
+});
