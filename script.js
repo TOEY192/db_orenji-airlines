@@ -136,11 +136,13 @@ window.onload = function () {
         document.getElementById('login-btn').style.display = 'none';
         document.getElementById('register-btn').style.display = 'none';
         document.getElementById('logout-btn').style.display = 'block';
+        document.getElementById('profile-btn').style.display = 'block';
     }
     else {
         document.getElementById('login-btn').style.display = 'block';
         document.getElementById('register-btn').style.display = 'block';
         document.getElementById('logout-btn').style.display = 'none';
+        document.getElementById('profile-btn').style.display = 'none';
     }
 }
 
