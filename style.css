@@ -407,7 +407,7 @@ a {
 
 /* กำหนดสไตล์ให้กับช่องค้นหา */
 .search-container {
-    position: relative;
+    position: relative; /* ทำให้ dropdown อยู่ภายใน container */
     width: 300px;
 }
 
@@ -417,12 +417,13 @@ a {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    z-index: 1; /* จัดลำดับให้ input อยู่ด้านล่าง */
 }
 
 /* สไตล์ของรายการผลลัพธ์ใน dropdown */
 .dropdown-list {
     position: absolute;
-    top: 100%; /* ทำให้ dropdown อยู่ด้านล่างของ input */
+    top: 100%; /* ให้ dropdown อยู่ด้านล่างของ input */
     left: 0;
     width: 100%;
     background-color: #fff;
@@ -434,7 +435,7 @@ a {
     margin-top: 4px;
     padding: 0;
     box-sizing: border-box;
-    z-index: 10; /* ให้ dropdown อยู่เหนือองค์ประกอบอื่น */
+    z-index: 2; /* ให้ dropdown อยู่ด้านหน้า input */
 }
 
 /* สไตล์ของแต่ละรายการ */
