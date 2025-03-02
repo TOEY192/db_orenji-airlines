@@ -182,6 +182,7 @@ app.get('/show-airports', (req, res) => {
 
 app.get("/search", (req, res) => {
     let searchQuery = req.query.q;
+    console.log(searchQuery);
     let sql = "SELECT * FROM Airports WHERE name LIKE ? LIMIT 10"; // จำกัดผลลัพธ์
     db.query(sql, [`%${searchQuery}%`], (err, results) => {
         if (err) {

@@ -4,6 +4,7 @@ async function searchData() {
     clearTimeout(timeout); // เคลียร์ timer ก่อนหน้า
     timeout = setTimeout(async () => {
         let query = document.getElementById("from-input").value;
+        console.log('query : ' , query);
         if (query.length > 0) { // ค้นหาเมื่อมีตัวอักษร
             let response = await fetch(`/search?q=${query}`);
             let data = await response.json();
