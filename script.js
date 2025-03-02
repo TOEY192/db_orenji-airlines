@@ -22,6 +22,14 @@ openEditInfoModal = () => {
     }, 10);
 }
 
+function closeEditInfoModal() {
+    document.getElementById("edit-info-Modal").style.opacity = 0;
+    document.querySelector("#edit-info-Modal .modal-content").style.opacity = 0;
+    setTimeout(() => {
+        document.getElementById("edit-info-Modal").style.display = "none";
+    }, 500);
+}
+
 function openLoginModal() {
     document.getElementById("loginModal").style.display = "block";
     setTimeout(() => {
@@ -109,6 +117,8 @@ document.getElementById('register-container').addEventListener('submit', functio
                 closeRegisterModal();
                 openEditInfoModal();
                 onLoginSuccess();
+                const token = data.token;  // ดึง token จาก response
+                localStorage.setItem('token', token);  // บันทึก token ไว้ใช้งาน
             } else {
                 alert('Invalid email or password');
             }
@@ -117,7 +127,42 @@ document.getElementById('register-container').addEventListener('submit', functio
             console.error('Error:', error);  // แสดงข้อผิดพลาดที่เกิดขึ้น
             alert('Registration failed. Please try again.', error);
         });
-});
+})
+
+document.getElementById('edit-info-container').addEventListener('submit', event => {
+    event.preventDefault();
+
+    const first_name = document.getElementById('first-name').value;
+    const last_name = document.getElementById('last-name').value;
+    const passport_number = document.getElementById('passport-number').value;
+
+    fetch('https://db-orenji-airlines.onrender.com/edit-info', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',  // ระบุว่าเรากำลังส่งข้อมูลในรูปแบบ JSON
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            first_name: first_name,
+            last_name: last_name,
+            passport_number: passport_number
+        })
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
+        if (data.message === 'User edit info successfully') {
+            console.log('edit info successful:', data);  // เมื่อข้อมูลถูกต้อง
+            alert('Edit info successful!');
+            closeEditInfoModal()
+            onLoginSuccess();
+        } else {
+            alert('Invalid email or password');
+        }
+    })
+})
 
 
 function closeAdditionalInfoModal() {
