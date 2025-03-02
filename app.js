@@ -32,12 +32,12 @@ app.use(express.static((__dirname)));
 
 // Route สำหรับหน้าแรก
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
-  })
+})
 
 
 app.get("/users", (req, res) => {
@@ -74,7 +74,7 @@ app.post("/login", async (req, res) => {
             }
             if (match) {
                 // รหัสผ่านถูกต้อง
-                res.json({ message: "Login successful", username: user.username, user: user});
+                res.json({ message: "Login successful", username: user.username, user: user });
             } else {
                 // รหัสผ่านไม่ถูกต้อง
                 res.status(401).json({ message: "Invalid email or password" });
@@ -82,6 +82,8 @@ app.post("/login", async (req, res) => {
         });
     });
 })
+
+const jwt = require('jsonwebtoken');
 
 // REGISTER API
 app.post("/register", (req, res) => {
@@ -102,7 +104,7 @@ app.post("/register", (req, res) => {
                     if (err) {
                         return res.status(500).send(err);
                     }
-                    
+
                     const userCount = results[0].user_count;
                     connection.query("ALTER TABLE users AUTO_INCREMENT = ?", [userCount], (err, results) => {
                         if (err) {
@@ -112,25 +114,58 @@ app.post("/register", (req, res) => {
                 })
                 return res.status(500).send(err);
             }
+            const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+            res.cookie("token", token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: "Strict"
+            });
+
             res.json({ message: "User registered successfully" });
         });
     });
 })
 
+const authenticateToken = (req, res, next) => {
+    const token = req.header('Authorization')?.split(' ')[1];
+    if (!token) return res.status(401).json({ message: 'Access Denied' });
+
+    jwt.verify(token, 'your_secret_key', (err, user) => {
+        if (err) return res.status(403).json({ message: 'Invalid Token' });
+
+        req.user = user; // { username: "example_user" }
+        next();
+    });
+};
+
+app.post('/edit-info', authenticateToken, (req, res) => {
+    const { first_name, last_name, passport_number } = req.body;
+    const username = req.user.username;
+
+    const sql = 'UPDATE users SET firstName = ?, lastName = ?, passportNumber = ? WHERE username = ?';
+    connection.query(sql, [first_name, last_name, passport_number, username], (err, results) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.json({ message: 'User info updated successfully' });
+    });
+});
+
 
 //ขั้นตอน booking เลือกว่าจะไปไหน แล้วเลือกจำนวนคน แล้วเลือกเที่ยวบิน และเลือกชั้น และราคาจะแสดออกมา
-.post('/booking', (req, res) => {
+app.post('/booking', (req, res) => {
     const { user_id, flight_id, child, adult, total_price } = req.body
     const sql = 'INSERT INTO Bookings (user_id, flight_id, child, adult, total_price, status) VALUE (?, ?, ?, ?, ?, ?)';
     const status = "Booked"
     connection.query(sql, [user_id, flight_id, child, adult, total_price, status], (err, results) => {
-        if(err) {
+        if (err) {
             return res.status(500).send(err)
         }
-        res.json({ message: "Booked success"})
+        res.json({ message: "Booked success" })
     })
 })
 
-.get('/show-airline', (req, res) => {
-    const { airport_code } = req.body; //จะได้มาเป็น airport-code
-})
+    .get('/show-airline', (req, res) => {
+        const { airport_code } = req.body; //จะได้มาเป็น airport-code
+    })
