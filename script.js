@@ -97,7 +97,6 @@ document.getElementById('register-container').addEventListener('submit', functio
                 console.log('Register successful:', data);  // เมื่อข้อมูลถูกต้อง
                 alert('Register successful!');
                 onLoginSuccess();
-                closeRegisterModal();
                 openAdditionalInfoModal();
             } else {
                 alert('Invalid email or password');
@@ -110,6 +109,7 @@ document.getElementById('register-container').addEventListener('submit', functio
 })
 
 function openAdditionalInfoModal() {
+    document.getElementById('register-container').style.display = "none";
     document.getElementById('additionalInfoModal').style.display = "block";
     document.getElementById('additionalInfoModal').addEventListener('submit', (event) => {
         event.preventDefault();
