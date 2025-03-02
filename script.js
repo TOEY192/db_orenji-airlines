@@ -90,7 +90,13 @@ document.getElementById('register-container').addEventListener('submit', functio
             password: password
         })
     })
-        .then(response => response.json())  // รับผลลัพธ์เป็น JSON
+        .then(response => {
+            // ตรวจสอบว่า Response สำเร็จหรือไม่
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();  // แปลง Response เป็น JSON
+        })
         .then(data => {
             console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
             if (data.message === 'User registered successfully') {
@@ -103,10 +109,10 @@ document.getElementById('register-container').addEventListener('submit', functio
             }
         })
         .catch((error) => {
-            console.error('Error:', error);
-            alert('Error Login');
+            console.error('Error:', error);  // แสดงข้อผิดพลาดที่เกิดขึ้น
+            alert('Registration failed. Please try again.');
         });
-})
+});
 
 function openAdditionalInfoModal() {
     document.getElementById('register-container').style.display = "none";
