@@ -74,7 +74,7 @@ app.post("/login", async (req, res) => {
             }
             if (match) {
                 // รหัสผ่านถูกต้อง
-                res.json({ message: "Login successful", username: user.username });
+                res.json({ message: "Login successful", username: user.username, user: user});
             } else {
                 // รหัสผ่านไม่ถูกต้อง
                 res.status(401).json({ message: "Invalid email or password" });

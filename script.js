@@ -37,7 +37,7 @@ document.getElementById('login-container').addEventListener('submit', function (
     event.preventDefault();  // ป้องกันการ submit ฟอร์มตามปกติ
 
     // รับค่าจากฟอร์ม
-    const email = document.getElementById('email-login').value;
+    const username = document.getElementById('username-login').value;
     const password = document.getElementById('password-login').value;
 
     // ส่งข้อมูลไปยัง API ด้วย fetch
@@ -47,7 +47,7 @@ document.getElementById('login-container').addEventListener('submit', function (
             'Content-Type': 'application/json',  // ระบุว่าเรากำลังส่งข้อมูลในรูปแบบ JSON
         },
         body: JSON.stringify({
-            email: email,
+            username: username,
             password: password
         })
     })
@@ -126,7 +126,6 @@ function onLogout() {
 window.onload = function () {
     const cookies = document.cookie.split(';');
     let isLoggedIn = false;
-
     cookies.forEach(cookie => {
         if (cookie.trim().startsWith('isLoggedIn=true')) {
             isLoggedIn = true;
@@ -143,43 +142,4 @@ window.onload = function () {
         document.getElementById('register-btn').style.display = 'block';
         document.getElementById('logout-btn').style.display = 'none';
     }
-};
-
-let currentIndex = 0;
-const images = document.querySelectorAll('.slider img');
-const totalImages = images.length;
-
-// ฟังก์ชันสำหรับเปลี่ยนภาพ
-function showNextImage() {
-    // ซ่อนภาพปัจจุบัน
-    images[currentIndex].classList.remove('active');
-
-    // คำนวณภาพถัดไป
-    currentIndex = (currentIndex + 1) % totalImages; // ใช้ % เพื่อให้มันวนกลับมาที่รูปแรก
-
-    // แสดงภาพใหม่
-    images[currentIndex].classList.add('active');
 }
-
-// แสดงภาพแรก
-images[currentIndex].classList.add('active');
-
-// เลื่อนรูปอัตโนมัติทุกๆ 6 วินาที (6000ms)
-setInterval(showNextImage, 6000);
-
-function moveSlide(direction) {
-    currentIndex += direction;
-    if (currentIndex < 0) {
-      currentIndex = images.length - 1;
-    } else if (currentIndex >= images.length) {
-      currentIndex = 0;
-    }
-    images.forEach((img, index) => {
-      img.classList.remove('active');
-      if (index === currentIndex) {
-        img.classList.add('active');
-      }
-    });
-  }
-  
-
