@@ -87,7 +87,7 @@
 
   <div class="search-container">
     <input type="text" id="from-input" placeholder="จากสนามบิน (ต้นทาง)" oninput="searchAirports('from')">
-    <div id="from-suggestions" class="suggestions"></div>
+    <ul id="result-from-list"></ul>
 
     <input type="text" id="to-input" placeholder="ถึงสนามบิน (ปลายทาง)" oninput="searchAirports('to')">
     <div id="to-suggestions" class="suggestions"></div>
@@ -96,8 +96,9 @@
   <!-- <div id="flightData">กำลังโหลดข้อมูลเที่ยวบิน...</div> -->
 
 
-  <script src="script.js"></script>
   <script src="app.js"></script> <!-- คำสั่งนี้จะโหลดไฟล์ app.js -->
+  <script src="script.js"></script>
+  <script src="searchFlight.js"></script>
 
   <!-- <script src="fetchAirports.js"></script>
     <script src="flight.js"></script> -->
