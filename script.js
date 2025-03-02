@@ -98,6 +98,7 @@ document.getElementById('register-container').addEventListener('submit', functio
                 alert('Register successful!');
                 onLoginSuccess();
                 closeRegisterModal();
+                openAdditionalInfoModal();
             } else {
                 alert('Invalid email or password');
             }
@@ -107,6 +108,34 @@ document.getElementById('register-container').addEventListener('submit', functio
             alert('Error Login');
         });
 })
+
+function openAdditionalInfoModal() {
+    document.getElementById('additionalInfoModal').style.display = "block";
+    document.getElementById('additionalInfoModal').addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const firstName = document.getElementById('full-name').value
+        const lastName = document.getElementById('last-name').value
+        const passportNumber = document.getElementById('passport-number').value
+
+        fetch('/edit-info', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                first_name: firstName,
+                last_name: lastName,
+                passport_number: passportNumber
+            })
+        })
+    })
+}
+
+function closeAdditionalInfoModal() {
+    document.getElementById('additionalInfoModal').style.display = "none";
+}
 
 document.getElementById('logout-btn').addEventListener('click', onLogout);
 
@@ -182,61 +211,3 @@ function moveSlide(direction) {
         }
     });
 }
-
-function openAdditionalInfoModal() {
-    document.getElementById("additionalInfoModal").style.display = "block";
-    setTimeout(() => {
-        document.getElementById("additionalInfoModal").style.opacity = 1;
-        document.querySelector("#additionalInfoModal .modal-content").style.opacity = 1;
-    }, 10);
-}
-
-function closeAdditionalInfoModal() {
-    document.getElementById("additionalInfoModal").style.opacity = 0;
-    document.querySelector("#additionalInfoModal .modal-content").style.opacity = 0;
-    setTimeout(() => {
-        document.getElementById("additionalInfoModal").style.display = "none";
-    }, 500);
-}
-
-then(data => {
-    if (data.message === 'User registered successfully') {
-        alert('Register successful!');
-        closeRegisterModal();
-        openAdditionalInfoModal(); // เปิด Modal ข้อมูลเพิ่มเติม
-    } else {
-        alert('Registration failed');
-    }
-})
-
-document.getElementById('additional-info-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    
-    const fullName = document.getElementById('full-name').value;
-    const lastName = document.getElementById('last-name').value;
-    const passportNumber = document.getElementById('passport-number').value;
-
-    // ส่งข้อมูลไปยังเซิร์ฟเวอร์ (ตัวอย่าง endpoint)
-    fetch('https://db-orenji-airlines.onrender.com/update-profile', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            // ใส่ token การเข้าสู่ระบบหากจำเป็น
-        },
-        body: JSON.stringify({
-            fullName: fullName,
-            lastName: lastName,
-            passportNumber: passportNumber
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            onLoginSuccess(); // เข้าสู่ระบบหลังจากกรอกข้อมูลเสร็จ
-            closeAdditionalInfoModal();
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-});
