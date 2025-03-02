@@ -116,37 +116,6 @@ function openAdditionalInfoModal() {
     document.getElementById('register-container').style.display = "none";
     document.getElementById('close-additional').style.display = "block";
     document.getElementById('additionalInfoModal').style.display = "block";
-    document.getElementById('additionalInfoModal').addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const firstName = document.getElementById('full-name').value
-        const lastName = document.getElementById('last-name').value
-        const passportNumber = document.getElementById('passport-number').value
-
-        fetch('https://db-orenji-airlines.onrender.com/edit-info', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                first_name: firstName,
-                last_name: lastName,
-                passport_number: passportNumber
-            })
-        })
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            console.log('Server Response:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error); 
-            alert('Registration failed. Please try again. EDIT INFO', error);
-        });
-
-    })
 }
 
 function closeAdditionalInfoModal() {
