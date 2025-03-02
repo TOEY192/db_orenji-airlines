@@ -51,12 +51,12 @@ app.get("/users", (req, res) => {
 
 // LOGIN API
 app.post("/login", async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    console.log(email);
+    console.log(username);
     console.log(password);
     // ตรวจสอบผู้ใช้จากฐานข้อมูล
-    connection.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
+    connection.query("SELECT * FROM users WHERE username = ?", [username], (err, results) => {
         if (err) {
             return res.status(500).send(err);
         }
@@ -72,17 +72,16 @@ app.post("/login", async (req, res) => {
             if (err) {
                 return res.status(500).send(err);
             }
-
             if (match) {
                 // รหัสผ่านถูกต้อง
-                res.json({ message: "Login successful", userId: user.id });
+                res.json({ message: "Login successful", username: user.username });
             } else {
                 // รหัสผ่านไม่ถูกต้อง
                 res.status(401).json({ message: "Invalid email or password" });
             }
         });
     });
-});
+})
 
 // REGISTER API
 app.post("/register", (req, res) => {
@@ -116,4 +115,4 @@ app.post("/register", (req, res) => {
             res.json({ message: "User registered successfully" });
         });
     });
-});
+})
