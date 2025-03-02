@@ -422,7 +422,7 @@ a {
 /* สไตล์ของรายการผลลัพธ์ใน dropdown */
 .dropdown-list {
     position: absolute;
-    top: 100%;
+    top: 100%; /* ทำให้ dropdown อยู่ด้านล่างของ input */
     left: 0;
     width: 100%;
     background-color: #fff;
@@ -434,6 +434,7 @@ a {
     margin-top: 4px;
     padding: 0;
     box-sizing: border-box;
+    z-index: 10; /* ให้ dropdown อยู่เหนือองค์ประกอบอื่น */
 }
 
 /* สไตล์ของแต่ละรายการ */
