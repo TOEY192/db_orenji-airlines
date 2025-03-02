@@ -26,7 +26,6 @@
   <div id="registerModal" class="modal">
     <div class="modal-content">
       <span class="close" id="close-register" onclick="closeRegisterModal()">&times;</span>
-      <span class="close" id="close-additional" onclick="closeAdditionalInfoModal()">&times;</span>
       <h2>Register</h2>
 
       <form id="register-container" class="register-container">
@@ -35,8 +34,15 @@
         <input type="password" id="password-register" placeholder="Password" required>
         <div class="new-register"><button type="submit">Register</button></div>
       </form>
+    </div>
+  </div>
 
-      <form id="additional-info-form">
+  <div id="edit-info-Modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-additional" onclick="closeAdditionalInfoModal()">&times;</span>
+      <h2>Edit your info</h2>
+
+      <form id="edit-info-container" class="edit-info-container">
         <input type="text" id="full-name" placeholder="Full Name" required>
         <input type="text" id="last-name" placeholder="Last Name" required>
         <input type="text" id="passport-number" placeholder="Passport Number" required>

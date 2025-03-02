@@ -1,5 +1,4 @@
 function openRegisterModal() {
-    document.getElementById('close-register').style.display = "block";
     document.getElementById("registerModal").style.display = "block";
     setTimeout(() => {
         document.getElementById("registerModal").style.opacity = 1;
@@ -8,12 +7,19 @@ function openRegisterModal() {
 }
 
 function closeRegisterModal() {
-    document.getElementById('close-register').style.display = "none";
     document.getElementById("registerModal").style.opacity = 0;
     document.querySelector("#registerModal .modal-content").style.opacity = 0;
     setTimeout(() => {
         document.getElementById("registerModal").style.display = "none";
     }, 500);
+}
+
+openEditInfoModal = () => {
+    document.getElementById('edit-info-Modal').style.display = "block";
+    setTimeout(() => {
+        document.getElementById("edit-info-Modal").style.opacity = 1;
+        document.querySelector("#edit-info-Modal .modal-content").style.opacity = 1;
+    }, 10);
 }
 
 function openLoginModal() {
@@ -100,7 +106,8 @@ document.getElementById('register-container').addEventListener('submit', functio
             if (data.message === 'User registered successfully') {
                 console.log('Register successful:', data);  // เมื่อข้อมูลถูกต้อง
                 alert('Register successful!');
-                openAdditionalInfoModal();
+                closeRegisterModal();
+                openEditInfoModal();
                 onLoginSuccess();
             } else {
                 alert('Invalid email or password');
@@ -112,11 +119,6 @@ document.getElementById('register-container').addEventListener('submit', functio
         });
 });
 
-function openAdditionalInfoModal() {
-    document.getElementById('register-container').style.display = "none";
-    document.getElementById('close-additional').style.display = "block";
-    document.getElementById('additionalInfoModal').style.display = "block";
-}
 
 function closeAdditionalInfoModal() {
     document.getElementById('additionalInfoModal').style.display = "none";
