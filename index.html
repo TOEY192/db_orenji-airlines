@@ -14,7 +14,7 @@
     <nav class="navbar">
         <a href="#" class="logo">OrenjiAirlines</a>
         <div class="nav-buttons">
-            <a href="#" id="profile-btn" class="profile-btn">
+            <a href="history.html" id="profile-btn" class="profile-btn">
                 <i class="fa-solid fa-user"></i> <!-- ไอคอนรูปคน -->
             </a>
             <a href="#" id="register-btn" class="register-btn" onclick="openRegisterModal()">register</a>
@@ -26,7 +26,6 @@
     <div id="registerModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeRegisterModal()">&times;</span>
-            <span class="close" onclick="closeAdditionalInfoModal()">&times;</span>
             <h2>Register</h2>
 
             <form id="register-container" class="register-container">
@@ -35,14 +34,19 @@
                 <input type="password" id="password-register" placeholder="Password" required>
                 <div class="new-register"><button type="submit">Register</button></div>
             </form>
+        </div>
+    </div>
 
+    <div id="additionalInfoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAdditionalInfoModal()">&times;</span>
+            <h2>Additional Information</h2>
             <form id="additional-info-form">
                 <input type="text" id="full-name" placeholder="Full Name" required>
                 <input type="text" id="last-name" placeholder="Last Name" required>
                 <input type="text" id="passport-number" placeholder="Passport Number" required>
                 <button type="submit">Submit</button>
             </form>
-
         </div>
     </div>
 
@@ -51,13 +55,12 @@
             <span class="close" onclick="closeLoginModal()">&times;</span>
             <h2>Login</h2>
             <form id="login-container" class="login-container">
+
                 <input type="text" id="username-login" placeholder="Username" required>
                 <input type="password" id="password-login" placeholder="Password" required>
                 <br>
                 <a href="#" id="forget-pass" class="forget-pass">forget-password?</a>
                 <div class="new-login"><button type="submit">Login</button></div>
-
-
 
             </form>
         </div>
