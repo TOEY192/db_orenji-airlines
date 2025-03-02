@@ -98,15 +98,15 @@ document.getElementById('register-container').addEventListener('submit', functio
             if (data.message === 'User registered successfully') {
                 console.log('Register successful:', data);  // เมื่อข้อมูลถูกต้อง
                 alert('Register successful!');
+                closeRegisterModal()
                 onLoginSuccess();
-                openAdditionalInfoModal();
             } else {
                 alert('Invalid email or password');
             }
         })
         .catch((error) => {
             console.error('Error:', error);  // แสดงข้อผิดพลาดที่เกิดขึ้น
-            alert('Registration failed. Please try again.');
+            alert('Registration failed. Please try again.', error);
         });
 });
 
