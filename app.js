@@ -169,6 +169,12 @@ app.post('/booking', (req, res) => {
     })
 })
 
-    .get('/show-airline', (req, res) => {
-        const { airport_code } = req.body; //จะได้มาเป็น airport-code
+    .get('/show-airports', (req, res) => {
+        const sql = 'SELECT * FROM Airports'
+        connection.query(sql, (err, results) => {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            res.json(results);
+        })
     })
