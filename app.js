@@ -117,13 +117,20 @@ app.post("/register", (req, res) => {
     });
 })
 
-.post('/add-airport', (req, res) => {
-    const { name, code, city, country } = req.body;
-    const sql = 'INSERT INTO Airports (name, code, city, country) VALUE (?, ?, ?, ?)';
-    connection.query(sql, [name, code, city, country], (err, results) => {
+
+//ขั้นตอน booking เลือกว่าจะไปไหน แล้วเลือกจำนวนคน แล้วเลือกเที่ยวบิน และเลือกชั้น และราคาจะแสดออกมา
+.post('/booking', (req, res) => {
+    const { user_id, flight_id, child, adult, total_price } = req.body
+    const sql = 'INSERT INTO Bookings (user_id, flight_id, child, adult, total_price, status) VALUE (?, ?, ?, ?, ?, ?)';
+    const status = "Booked"
+    connection.query(sql, [user_id, flight_id, child, adult, total_price, status], (err, results) => {
         if(err) {
-            return res.status(500).send(err);
+            return res.status(500).send(err)
         }
-        res.json({ message: "add airport success"})
+        res.json({ message: "Booked success"})
     })
+})
+
+.get('/show-airline', (req, res) => {
+    const { airport_code } = req.body; //จะได้มาเป็น airport-code
 })

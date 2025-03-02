@@ -106,7 +106,7 @@ document.getElementById('register-container').addEventListener('submit', functio
             console.error('Error:', error);
             alert('Error Login');
         });
-});
+})
 
 document.getElementById('logout-btn').addEventListener('click', onLogout);
 
