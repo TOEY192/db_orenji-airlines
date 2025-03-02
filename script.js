@@ -98,7 +98,7 @@ document.getElementById('register-container').addEventListener('submit', functio
             if (data.message === 'User registered successfully') {
                 console.log('Register successful:', data);  // เมื่อข้อมูลถูกต้อง
                 alert('Register successful!');
-                closeRegisterModal()
+                openAdditionalInfoModal();
                 onLoginSuccess();
             } else {
                 alert('Invalid email or password');
@@ -120,7 +120,7 @@ function openAdditionalInfoModal() {
         const lastName = document.getElementById('last-name').value
         const passportNumber = document.getElementById('passport-number').value
 
-        fetch('/edit-info', {
+        fetch('https://db-orenji-airlines.onrender.com/edit-info', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -132,6 +132,17 @@ function openAdditionalInfoModal() {
                 passport_number: passportNumber
             })
         })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log('Server Response:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error); 
+            alert('Registration failed. Please try again.', error);
+        });
+
     })
 }
 
