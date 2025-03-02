@@ -404,3 +404,50 @@ a {
 /* .suggestion-item:hover {
     background-color: #f0f0f0;
 } */
+
+/* กำหนดสไตล์ให้กับช่องค้นหา */
+.search-container {
+    position: relative;
+    width: 300px;
+}
+
+#from-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* สไตล์ของรายการผลลัพธ์ใน dropdown */
+.dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none; /* ซ่อนเมื่อไม่มีผลลัพธ์ */
+    margin-top: 4px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* สไตล์ของแต่ละรายการ */
+.dropdown-list li {
+    padding: 8px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.dropdown-list li:hover {
+    background-color: #f0f0f0;
+}
+
+/* แสดง dropdown เมื่อมีผลลัพธ์ */
+.dropdown-list.show {
+    display: block;
+}
