@@ -116,3 +116,14 @@ app.post("/register", (req, res) => {
         });
     });
 })
+
+.post('/add-airport', (req, res) => {
+    const { name, code, city, country } = req.body;
+    const sql = 'INSERT INTO Airports (name, code, city, country) VALUE (?, ?, ?, ?)';
+    connection.query(sql, [name, code, city, country], (err, results) => {
+        if(err) {
+            return res.status(500).send(err);
+        }
+        res.json({ message: "add airport success"})
+    })
+})
