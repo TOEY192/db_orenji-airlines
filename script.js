@@ -131,6 +131,8 @@ document.getElementById('register-container').addEventListener('submit', functio
 document.getElementById('edit-info-container').addEventListener('submit', event => {
     event.preventDefault();
 
+    const token = localStorage.getItem('token');
+    
     const first_name = document.getElementById('first-name').value;
     const last_name = document.getElementById('last-name').value;
     const passport_number = document.getElementById('passport-number').value;
