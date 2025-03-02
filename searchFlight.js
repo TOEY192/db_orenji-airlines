@@ -8,6 +8,7 @@ async function searchData() {
         if (query.length > 0) { // ค้นหาเมื่อมีตัวอักษร
             let response = await fetch(`/search?q=${query}`);
             let data = await response.json();
+            console.log('data : ', data)
 
             let resultList = document.getElementById("result-from-list");
             resultList.innerHTML = ""; // ล้างรายการเก่า
