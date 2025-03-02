@@ -60,7 +60,7 @@ a {
     display: none;
 }
 
-.login-btn, 
+.login-btn,
 .logout-btn {
     background-color: var(--white);
     color: var(--main_color);
@@ -176,7 +176,7 @@ a {
     box-sizing: border-box;
 }
 
-.services-content{
+.services-content {
     width: 100%;
     max-width: 800px;
     text-align: center;
@@ -189,7 +189,9 @@ a {
     margin-top: 20px;
 }
 
-.airplane-btn, .hotel-btn, .rentcar-btn {
+.airplane-btn,
+.hotel-btn,
+.rentcar-btn {
     padding: 12px 24px;
     background-color: black;
     color: var(--white);
@@ -201,7 +203,7 @@ a {
     white-space: nowrap;
     font-size: clamp(12px, 1.2vw, 16px);
     width: clamp(80px, 30%, 30px);
-    
+
 }
 
 .airplane-btn:hover {
@@ -233,29 +235,40 @@ a {
 /* Container ที่ใช้จัดวางกลางหน้า */
 .slider-container {
     display: flex;
-    justify-content: center;  /* จัดกลางแนวนอน */
-    align-items: center;      /* จัดกลางแนวตั้ง */
-    height: 40vh;            /* ความสูงเต็มหน้าจอ */
-    width: 100%;              /* ความกว้างเต็มหน้าจอ */
+    justify-content: center;
+    /* จัดกลางแนวนอน */
+    align-items: center;
+    /* จัดกลางแนวตั้ง */
+    height: 40vh;
+    /* ความสูงเต็มหน้าจอ */
+    width: 100%;
+    /* ความกว้างเต็มหน้าจอ */
 }
 
 /* สไลเดอร์ */
 .slider {
-    width: 80%;      /* ขนาดสไลเดอร์เป็น 80% ของความกว้างหน้าจอ */
-    height: 300px;   /* ความสูงคงที่ของสไลเดอร์ */
+    width: 80%;
+    /* ขนาดสไลเดอร์เป็น 80% ของความกว้างหน้าจอ */
+    height: 300px;
+    /* ความสูงคงที่ของสไลเดอร์ */
     overflow: hidden;
     position: relative;
 }
 
 /* ภาพภายในสไลเดอร์ */
 .slider img {
-    width: 100%;      /* กว้างเต็มสไลเดอร์ */
-    height: 100%;     /* สูงเต็มสไลเดอร์ */
-    object-fit: cover; /* คงสัดส่วนและไม่ยืดภาพ */
+    width: 100%;
+    /* กว้างเต็มสไลเดอร์ */
+    height: 100%;
+    /* สูงเต็มสไลเดอร์ */
+    object-fit: cover;
+    /* คงสัดส่วนและไม่ยืดภาพ */
     position: absolute;
     top: 0;
-    left: 100%;       /* เริ่มจากด้านขวาสุด */
-    transition: left 1s ease-in-out; /* สมูทในการเลื่อนภาพ */
+    left: 100%;
+    /* เริ่มจากด้านขวาสุด */
+    transition: left 1s ease-in-out;
+    /* สมูทในการเลื่อนภาพ */
 }
 
 /* คลาสที่ทำให้ภาพแสดง */
@@ -267,7 +280,8 @@ a {
 .click-btn button {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* จัดตำแหน่งปุ่มให้ตรงกลางในแนวตั้ง */
+    transform: translateY(-50%);
+    /* จัดตำแหน่งปุ่มให้ตรงกลางในแนวตั้ง */
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
@@ -279,49 +293,82 @@ a {
 }
 
 .prev {
-    top:40%;
-    left: 6%; /* ปุ่ม "Previous" อยู่ทางซ้าย */
+    top: 40%;
+    left: 6%;
+    /* ปุ่ม "Previous" อยู่ทางซ้าย */
 }
 
 .next {
-    top:40%;
-    right: 6%; /* ปุ่ม "Next" อยู่ทางขวา */
+    top: 40%;
+    right: 6%;
+    /* ปุ่ม "Next" อยู่ทางขวา */
 }
 
 .click-btn button:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* เปลี่ยนสีเมื่อ hover */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* เปลี่ยนสีเมื่อ hover */
 }
 
 /* กรอบสำหรับทั้งสองช่องค้นหา */
 .search-container {
-    width: 80%; /* ขนาดของกรอบอยู่ที่ 80% ของหน้าจอ */
-    max-width: 500px; /* กำหนดความกว้างสูงสุด */
-    margin: 20px auto; /* จัดกลาง */
+    width: 80%;
+    /* ขนาดของกรอบอยู่ที่ 80% ของหน้าจอ */
+    max-width: 500px;
+    /* กำหนดความกว้างสูงสุด */
+    margin: 20px auto;
+    /* จัดกลาง */
     padding: 20px;
-    border: 2px solid var(--main_color); /* กรอบสีหลัก */
-    border-radius: 10px; /* มุมโค้ง */
-    background-color: white; /* สีพื้นหลัง */
-    box-sizing: border-box; /* การตั้งค่า box-sizing เพื่อให้กรอบไม่เกินขนาดที่กำหนด */
+    border: 2px solid var(--main_color);
+    /* กรอบสีหลัก */
+    border-radius: 10px;
+    /* มุมโค้ง */
+    background-color: white;
+    /* สีพื้นหลัง */
+    box-sizing: border-box;
+    /* การตั้งค่า box-sizing เพื่อให้กรอบไม่เกินขนาดที่กำหนด */
 }
 
 /* ปรับขนาดช่องค้นหา */
-#from-input, #to-input {
-    width: 100%; /* ให้ช่องค้นหากว้างเต็มกรอบ */
-    padding: 12px; /* เพิ่มพื้นที่ภายใน */
+#from-input,
+#to-input {
+    width: 100%;
+    /* ให้ช่องค้นหากว้างเต็มกรอบ */
+    padding: 12px;
+    /* เพิ่มพื้นที่ภายใน */
     margin: 10px 0;
     border-radius: 5px;
     /* border: 1px solid #ccc; เพิ่มขอบบางๆ เพื่อให้ดูพอดี */
     font-size: 16px;
-    outline: none; /* เอาเส้นขอบออกเมื่อโฟกัส */
-    box-sizing: border-box; /* เพิ่ม box-sizing เพื่อจัดการพื้นที่ภายในช่องค้นหา */
+    outline: none;
+    /* เอาเส้นขอบออกเมื่อโฟกัส */
+    box-sizing: border-box;
+    /* เพิ่ม box-sizing เพื่อจัดการพื้นที่ภายในช่องค้นหา */
 }
 
 /* เมื่อโฟกัส ให้เพิ่มเส้นขอบ */
-#from-input:focus, #to-input:focus {
-    border: 2px solid var(--main_color); /* เพิ่มกรอบเมื่อโฟกัส */
-    box-shadow: 0 0 5px rgba(223, 167, 84, 0.5); /* เพิ่มเงาเล็กน้อย */
+#from-input:focus,
+#to-input:focus {
+    border: 2px solid var(--main_color);
+    /* เพิ่มกรอบเมื่อโฟกัส */
+    box-shadow: 0 0 5px rgba(223, 167, 84, 0.5);
+    /* เพิ่มเงาเล็กน้อย */
 }
 
+.profile-btn {
+    font-size: 30px;
+    color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#profile-btn {
+    display: none;
+}
+
+.profile-btn:hover {
+    color: #aaa;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
 
 
 /* สไตล์สำหรับคำแนะนำ (suggestions) */
@@ -344,5 +391,3 @@ a {
 /* .suggestion-item:hover {
     background-color: #f0f0f0;
 } */
-
-
