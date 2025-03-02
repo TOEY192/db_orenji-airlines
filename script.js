@@ -182,3 +182,19 @@ function moveSlide(direction) {
         }
     });
 }
+
+function openAdditionalInfoModal() {
+    document.getElementById('additionalInfoModal').style.display = "block";
+}
+
+function closeAdditionalInfoModal() {
+    document.getElementById('additionalInfoModal').style.display = "none";
+}
+
+document.getElementById('register-container').addEventListener('submit', function(e) {
+    e.preventDefault(); // ป้องกันการ submit แบบเดิม
+    // สามารถเช็คข้อมูลที่กรอกในฟอร์มได้ที่นี่
+
+    // เมื่อการสมัครเสร็จสิ้น ให้เปิดฟอร์มข้อมูลเพิ่มเติม
+    openAdditionalInfoModal();
+});
