@@ -33,7 +33,7 @@ function closeLoginModal() {
 let isLoggedIn = false;
 
 // ดักจับการ submit ฟอร์ม
-document.getElementById('login-container').addEventListener('submit', function(event) {
+document.getElementById('login-container').addEventListener('submit', function (event) {
     event.preventDefault();  // ป้องกันการ submit ฟอร์มตามปกติ
 
     // รับค่าจากฟอร์ม
@@ -51,26 +51,26 @@ document.getElementById('login-container').addEventListener('submit', function(e
             password: password
         })
     })
-    .then(response => response.json())  // รับผลลัพธ์เป็น JSON
-    .then(data => {
-        console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
-        if (data.message === 'Invalid email or password') {
-            alert('Invalid email or password');
-        } else {
-            console.log('Login successful:', data);  // เมื่อข้อมูลถูกต้อง
-            alert('Login successful!');
-            onLoginSuccess();
-            closeLoginModal();
-        }
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('Error Login');
-    });
+        .then(response => response.json())  // รับผลลัพธ์เป็น JSON
+        .then(data => {
+            console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
+            if (data.message === 'Invalid email or password') {
+                alert('Invalid email or password');
+            } else {
+                console.log('Login successful:', data);  // เมื่อข้อมูลถูกต้อง
+                alert('Login successful!');
+                onLoginSuccess();
+                closeLoginModal();
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Error Login');
+        });
 });
 
 // ดักจับการ submit ฟอร์ม
-document.getElementById('register-container').addEventListener('submit', function(event) {
+document.getElementById('register-container').addEventListener('submit', function (event) {
     event.preventDefault();  // ป้องกันการ submit ฟอร์มตามปกติ
 
     // รับค่าจากฟอร์ม
@@ -90,22 +90,22 @@ document.getElementById('register-container').addEventListener('submit', functio
             password: password
         })
     })
-    .then(response => response.json())  // รับผลลัพธ์เป็น JSON
-    .then(data => {
-        console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
-        if (data.message === 'User registered successfully') {
-            console.log('Register successful:', data);  // เมื่อข้อมูลถูกต้อง
-            alert('Register successful!');
-            onLoginSuccess();
-            closeRegisterModal();
-        } else {
-            alert('Invalid email or password');
-        }
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('Error Login');
-    });
+        .then(response => response.json())  // รับผลลัพธ์เป็น JSON
+        .then(data => {
+            console.log('Server Response:', data);  // แสดงผลตอบรับจาก API
+            if (data.message === 'User registered successfully') {
+                console.log('Register successful:', data);  // เมื่อข้อมูลถูกต้อง
+                alert('Register successful!');
+                onLoginSuccess();
+                closeRegisterModal();
+            } else {
+                alert('Invalid email or password');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Error Login');
+        });
 });
 
 document.getElementById('logout-btn').addEventListener('click', onLogout);
@@ -123,9 +123,10 @@ function onLogout() {
 }
 
 // ตรวจสอบสถานะการล็อกอินจาก cookie
-window.onload = function() {
+window.onload = function () {
     const cookies = document.cookie.split(';');
     let isLoggedIn = false;
+
     cookies.forEach(cookie => {
         if (cookie.trim().startsWith('isLoggedIn=true')) {
             isLoggedIn = true;
@@ -143,3 +144,42 @@ window.onload = function() {
         document.getElementById('logout-btn').style.display = 'none';
     }
 };
+
+let currentIndex = 0;
+const images = document.querySelectorAll('.slider img');
+const totalImages = images.length;
+
+// ฟังก์ชันสำหรับเปลี่ยนภาพ
+function showNextImage() {
+    // ซ่อนภาพปัจจุบัน
+    images[currentIndex].classList.remove('active');
+
+    // คำนวณภาพถัดไป
+    currentIndex = (currentIndex + 1) % totalImages; // ใช้ % เพื่อให้มันวนกลับมาที่รูปแรก
+
+    // แสดงภาพใหม่
+    images[currentIndex].classList.add('active');
+}
+
+// แสดงภาพแรก
+images[currentIndex].classList.add('active');
+
+// เลื่อนรูปอัตโนมัติทุกๆ 6 วินาที (6000ms)
+setInterval(showNextImage, 6000);
+
+function moveSlide(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) {
+      currentIndex = images.length - 1;
+    } else if (currentIndex >= images.length) {
+      currentIndex = 0;
+    }
+    images.forEach((img, index) => {
+      img.classList.remove('active');
+      if (index === currentIndex) {
+        img.classList.add('active');
+      }
+    });
+  }
+  
+

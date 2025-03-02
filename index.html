@@ -2,59 +2,91 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OrenjiAirlines</title>
-  <link rel="stylesheet" href="/style.css"> <!-- คำสั่งนี้จะโหลดไฟล์ style.css -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrenjiAirlines</title>
+    <link rel="stylesheet" href="styles.css"> <!-- คำสั่งนี้จะโหลดไฟล์ style.css -->
 </head>
 
 <body>
-  <nav class="navbar">
-    <a href="#" class="logo">OrenjiAirlines</a>
-    <div class="nav-buttons">
-      <a href="#" id="register-btn" class="register-btn" onclick="openRegisterModal()">register</a>
-      <a href="#" id="login-btn" class="login-btn" onclick="openLoginModal()">login</a>
-      <a href="#" id="logout-btn" class="logout-btn">logout</a>
-    </div>
-  </nav>
+    <nav class="navbar">
+        <a href="#" class="logo">OrenjiAirlines</a>
+        <div class="nav-buttons">
+            <a href="#" id="register-btn" class="register-btn" onclick="openRegisterModal()">register</a>
+            <a href="#" id="login-btn" class="login-btn" onclick="openLoginModal()">login</a>
+            <a href="#" id="logout-btn" class="logout-btn">logout</a>
+        </div>
+    </nav>
 
-  <div id="registerModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeRegisterModal()">&times;</span>
-      <h2>Register</h2>
-      <form id="register-container" class="register-container">
-        <input type="text" id="username-register" placeholder="Username" required>
-        <input type="email" id="email-register" placeholder="Email" required>
-        <input type="password" id="password-register" placeholder="Password" required>
-        <button type="submit">Register</button>
-      </form>
-    </div>
-  </div>
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegisterModal()">&times;</span>
+            <h2>Register</h2>
+            <form id="register-container" class="register-container">
+                <input type="text" id="username-register" placeholder="Username" required>
+                <input type="email" id="email-register" placeholder="Email" required>
+                <input type="password" id="password-register" placeholder="Password" required>
+                <div class="new-register"><button type="submit">Register</button></div>
 
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeLoginModal()">&times;</span>
-      <h2>Login</h2>
-      <form id="login-container" class="login-container">
-        <input type="text" id="email-login" placeholder="Email" required>
-        <input type="password" id="password-login" placeholder="Password" required>
-        <button type="submit" Login>Login</button>
-      </form>
+            </form>
+        </div>
     </div>
-  </div>
 
-  <div class="services">
-    <div class="services-content">
-      <div class="services-container">
-        <a href="#" class="airplane-btn">Book Flight</a>
-        <a href="#" class="hotel-btn">Book Hotel</a>
-        <a href="#" class="rentcar-btn">Rent Car</a>
-      </div>
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login</h2>
+            <form id="login-container" class="login-container">
+                <input type="text" id="email-login" placeholder="Email" required>
+                <input type="password" id="password-login" placeholder="Password" required>
+                <br>
+                <a href="#" id="forget-pass" class="forget-pass">forget-password?</a>
+                <div class="new-login"><button type="submit">Login</button></div>
+
+
+
+            </form>
+        </div>
     </div>
-  </div>
 
-  <script src="/script.js"></script>
-  <script src="/app.js"></script> <!-- คำสั่งนี้จะโหลดไฟล์ app.js -->
+    <div class="services">
+        <div class="services-content">
+            <div class="services-container">
+                <a href="#" class="airplane-btn">Book Flight</a>
+                <a href="#" class="hotel-btn">Book Hotel</a>
+                <a href="#" class="rentcar-btn">Rent Car</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider">
+            <img src="https://ik.imagekit.io/Orenji/default-image.jpg?updatedAt=1740711544692">
+            <img src="https://ik.imagekit.io/Orenji/slide2.jpg?updatedAt=1740852857796">
+        </div>
+        <div class="click-btn"><button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="from-input" placeholder="จากสนามบิน (ต้นทาง)" oninput="searchAirports('from')">
+        <div id="from-suggestions" class="suggestions"></div>
+
+        <input type="text" id="to-input" placeholder="ถึงสนามบิน (ปลายทาง)" oninput="searchAirports('to')">
+        <div id="to-suggestions" class="suggestions"></div>
+    </div>
+
+    <!-- <div id="flightData">กำลังโหลดข้อมูลเที่ยวบิน...</div> -->
+
+
+    <script src="script.js"></script>
+    <script src="app.js"></script> <!-- คำสั่งนี้จะโหลดไฟล์ app.js -->
+    <!-- <script src="fetchAirports.js"></script>
+    <script src="flight.js"></script> -->
+
+
 </body>
 
 </html>
