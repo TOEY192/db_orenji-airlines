@@ -346,7 +346,7 @@ a {
     /* เอาเส้นขอบออกเมื่อโฟกัส */
     box-sizing: border-box;
     /* เพิ่ม box-sizing เพื่อจัดการพื้นที่ภายในช่องค้นหา */
-    border: 2px solid transparent;
+    border: 2px solid #d3d3d3;
 }
 
 /* เมื่อโฟกัส ให้เพิ่มเส้นขอบ */
