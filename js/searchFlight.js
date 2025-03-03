@@ -77,3 +77,11 @@ async function searchDestinationData() {
         }
     }, 300); // ดีเลย์ 300ms เพื่อป้องกันโหลด API มากเกินไป
 }
+
+async function showFlight() {
+    const from = document.getElementById('from-input').value
+    const dest = document.getElementById('to-input').value
+
+    const goWhere = from + dest;
+    document.getElementById('goWhere').innerHTML = goWhere;
+}

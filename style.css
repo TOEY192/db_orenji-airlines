@@ -387,28 +387,6 @@ a {
     display: none;
 }
 
-
-/* สไตล์สำหรับคำแนะนำ (suggestions) */
-/* .suggestions {
-    border: 1px solid #ccc;
-    max-height: 200px;
-    overflow-y: auto;
-    position: absolute;
-    background-color: white;
-    width: 100%;
-    z-index: 1000;
-    margin-top: 5px;
-} */
-
-/* .suggestion-item {
-    padding: 10px;
-    cursor: pointer;
-} */
-
-/* .suggestion-item:hover {
-    background-color: #f0f0f0;
-} */
-
 /* สไตล์ของรายการผลลัพธ์ใน dropdown */
 .dropdown-list {
     position: absolute;
@@ -441,4 +419,34 @@ a {
 /* แสดง dropdown เมื่อมีผลลัพธ์ */
 .dropdown-list.show {
     display: block;
+}
+
+#submit-search-flight {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#submit-search-flight:hover svg {
+    background-color: white;
+    fill: var(--main_color);
+    border-color: var(--main_color);
+}
+
+#submit-search-flight svg {
+    background-color: var(--main_color);
+    fill: white;
+    height: 26px;
+    padding: 8px;
+    border: 2px solid var(--main_color);
+    border-radius: 4px;
+    transition: .3s ease background-color, .15s ease fill;
+}
+
+
+.flight {
+    margin: auto;
+    width: 400px;
+    height: 400px;
+    background-color: var(--main_color);
 }
