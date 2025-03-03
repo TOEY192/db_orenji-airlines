@@ -14,6 +14,7 @@ async function searchFromData() {
             resultList.classList.add("show"); // แสดง dropdown
 
             data.forEach(item => {
+                console.log(item)
                 let li = document.createElement("li");
 
                 // สร้าง <a> tag
