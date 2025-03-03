@@ -311,6 +311,8 @@ a {
 
 /* กรอบสำหรับทั้งสองช่องค้นหา */
 .search-container {
+    display: flex;
+    gap: 15px;
     width: 80%;
     /* ขนาดของกรอบอยู่ที่ 80% ของหน้าจอ */
     max-width: 500px;
@@ -343,6 +345,7 @@ a {
     /* เอาเส้นขอบออกเมื่อโฟกัส */
     box-sizing: border-box;
     /* เพิ่ม box-sizing เพื่อจัดการพื้นที่ภายในช่องค้นหา */
+    border: 2px solid transparent;
 }
 
 /* เมื่อโฟกัส ให้เพิ่มเส้นขอบ */
@@ -404,21 +407,6 @@ a {
 /* .suggestion-item:hover {
     background-color: #f0f0f0;
 } */
-
-/* กำหนดสไตล์ให้กับช่องค้นหา */
-.search-container {
-    position: relative; /* ทำให้ dropdown อยู่ภายใน container */
-    width: 300px;
-}
-
-#from-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    z-index: 1; /* จัดลำดับให้ input อยู่ด้านล่าง */
-}
 
 /* สไตล์ของรายการผลลัพธ์ใน dropdown */
 .dropdown-list {
