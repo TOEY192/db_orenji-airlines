@@ -95,7 +95,7 @@ async function showFlight() {
     console.log(`ค้นหาเที่ยวบินจาก ${from} ไป ${dest} วันที่ ${date}, ผู้ใหญ่: ${adults}, เด็ก: ${children}`);
 
     // เรียก API โดยใช้ query parameters แทน body
-    fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${from}&arrival_airport_name=${dest}`)
+    fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}`)
     .then(response => response.json())
     .then(data => {
         let ul = document.getElementById('goWhere');

@@ -202,8 +202,8 @@ app.get('/show-flight', async (req, res) => {
         const sql = 'SELECT airport_id FROM Airports WHERE name = ?';
         
         console.log("output: ", departure_airport_name, arrival_airport_name)
-        const [departureResult] = await connection.promise().query(sql, [departure_airport_name]);
-        const [arrivalResult] = await connection.promise().query(sql, [arrival_airport_name]);
+        const [departureResult] = await connection.promise().query(sql, [decodeURIComponent(departure_airport_name)]);
+        const [arrivalResult] = await connection.promise().query(sql, [decodeURIComponent(arrival_airport_name)]);
         console.log("output: ", departureResult, arrivalResult)
         // ตรวจสอบว่าเจอสนามบินหรือไม่
         if (departureResult.length === 0 || arrivalResult.length === 0) {
