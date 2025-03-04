@@ -44,15 +44,17 @@ async function searchDestinationData() {
     clearTimeout(timeout); // เคลียร์ timer ก่อนหน้า
     timeout = setTimeout(async () => {
         let query = document.getElementById("to-input").value;
+        console.log({query})
         if (query.length > 0) { // ค้นหาเมื่อมีตัวอักษร
             let response = await fetch(`/search?q=${query}`);
             let data = await response.json();
-
+            console.log({data})
             let resultList = document.getElementById("result-destination-list");
             resultList.innerHTML = ""; // ล้างรายการเก่า
             resultList.classList.add("show"); // แสดง dropdown
 
             data.forEach(item => {
+                console.log(item)
                 let li = document.createElement("li");
 
                 // สร้าง <a> tag
@@ -73,7 +75,7 @@ async function searchDestinationData() {
             });
         } else {
             document.getElementById("result-destination-list").innerHTML = "";
-            document.getElementById("result-destination-list").classList.remove("show"); 
+            document.getElementById("result-destination-list").classList.remove("show");
         }
     }, 300); // ดีเลย์ 300ms เพื่อป้องกันโหลด API มากเกินไป
 }
@@ -85,24 +87,17 @@ async function showFlight() {
     const adults = document.getElementById("adult-count").value;
     const children = document.getElementById("child-count").value;
 
-    if (!from || !to || !date) {
+    console.log(from, dest, date, adults, children)
+
+    if (!from || !dest || !date) {
         alert("กรุณากรอกข้อมูลให้ครบถ้วน");
         return;
     }
 
-    console.log(`ค้นหาเที่ยวบินจาก ${from} ไป ${to} วันที่ ${date}, ผู้ใหญ่: ${adults}, เด็ก: ${children}`);
+    console.log(`ค้นหาเที่ยวบินจาก ${from} ไป ${dest} วันที่ ${date}, ผู้ใหญ่: ${adults}, เด็ก: ${children}`);
 
     // เรียก API โดยใช้ query parameters แทน body
-    fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            departure_airport_name: from,
-            arrival_airport_name: dest
-        })
-    })
+    fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}`)
     .then(response => response.json())
     .then(data => {
         let ul = document.getElementById('goWhere');

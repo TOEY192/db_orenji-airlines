@@ -43,7 +43,11 @@ a {
     margin-left: auto;
 }
 
+<<<<<<< HEAD
 .home-btn{
+=======
+.home-btn {
+>>>>>>> temp-branch
     padding: 10px clamp(15px, 3vw, 25px);
     border-radius: 20px;
     cursor: pointer;
@@ -57,7 +61,11 @@ a {
     border: var(--border_btn);
 }
 
+<<<<<<< HEAD
 .home-btn:hover{
+=======
+.home-btn:hover {
+>>>>>>> temp-branch
     background-color: var(--main_color);
     color: var(--white);
 }
@@ -334,6 +342,7 @@ a {
 .search-container {
     position: relative;
     display: flex;
+    flex-wrap: nowrap;
     gap: 15px;
     width: 80%;
     /* ขนาดของกรอบอยู่ที่ 80% ของหน้าจอ */
@@ -352,17 +361,16 @@ a {
     /* การตั้งค่า box-sizing เพื่อให้กรอบไม่เกินขนาดที่กำหนด */
 }
 
-#daparture-date{
-    height:30px;
-    width:100%;
-    margin-top:24px;
-    
+#daparture-date {
+    height: 30px;
+    width: 100%;
+    margin-top: 24px;
+
 }
 
 #adult-count,
-#child-count
-{
-    width:50px
+#child-count {
+    width: 50px
 }
 
 /* ปรับขนาดช่องค้นหา */
@@ -409,7 +417,8 @@ a {
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-.fa-solid, .fas {
+.fa-solid,
+.fas {
     display: flex;
 }
 
@@ -424,7 +433,8 @@ a {
 /* สไตล์ของรายการผลลัพธ์ใน dropdown */
 .dropdown-list {
     position: absolute;
-    top: 100%; /* ให้ dropdown อยู่ด้านล่างของ input */
+    top: 100%;
+    /* ให้ dropdown อยู่ด้านล่างของ input */
     left: 0;
     width: 100%;
     background-color: #fff;
@@ -432,11 +442,13 @@ a {
     border-radius: 4px;
     max-height: 200px;
     overflow-y: auto;
-    display: none; /* ซ่อนเมื่อไม่มีผลลัพธ์ */
+    display: none;
+    /* ซ่อนเมื่อไม่มีผลลัพธ์ */
     margin-top: 4px;
     padding: 0;
     box-sizing: border-box;
-    z-index: 2; /* ให้ dropdown อยู่ด้านหน้า input */
+    z-index: 2;
+    /* ให้ dropdown อยู่ด้านหน้า input */
 }
 
 /* สไตล์ของแต่ละรายการ */
@@ -493,6 +505,7 @@ a {
     padding-top: 15px;
 }
 
+<<<<<<< HEAD
 .edit-info-container input,
 .edit-info-container button
 {
@@ -528,3 +541,45 @@ a {
 .edit-history button:hover {
     background-color:#aaa
 }
+=======
+@media (max-width: 768px) {
+    .search-container {
+        flex-wrap: wrap;
+    }
+}
+
+    .edit-info-container input,
+    .edit-info-container button {
+        width: 70%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .edit-info-container button:hover {
+        background-color: #aaa
+    }
+
+    .body-Modal {
+        background: #ccc;
+        width: 500px;
+        height: 500px;
+        border-radius: 5px;
+        border: 3px solid #000000;
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .edit-history input,
+    .edit-history button {
+        border-radius: 5px;
+        width: 60%;
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .edit-history button:hover {
+        background-color: #aaa
+    }
+>>>>>>> temp-branch
