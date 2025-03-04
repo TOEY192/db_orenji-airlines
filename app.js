@@ -198,6 +198,7 @@ app.get('/show-flight', async (req, res) => {
         // รับค่าจาก Query String
         const { departure_airport_name, arrival_airport_name } = req.params; 
 
+        console.log(departure_airport_name, arrival_airport_name)
         // ดึง airport_id จากชื่อสนามบิน
         const sql = 'SELECT airport_id FROM Airports WHERE name = ?';
 
