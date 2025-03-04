@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
         .then(data => {
             console.log(data)
+            console.log(data.firstName)
+            console.log(data.lastName)
             document.getElementById('name').innerHTML = data.firstName + " " + data.lastName;
         })
 

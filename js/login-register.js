@@ -181,6 +181,7 @@ function onLoginSuccess() {
 // เมื่อผู้ใช้ logout
 function onLogout() {
     document.cookie = "isLoggedIn=false; path=/"; // ลบสถานะจาก cookie
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
     location.reload();
 }
 
