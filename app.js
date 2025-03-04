@@ -73,8 +73,16 @@ app.post("/login", async (req, res) => {
                 return res.status(500).send(err);
             }
             if (match) {
-                // รหัสผ่านถูกต้อง
-                res.json({ message: "Login successful", username: user.username, user: user });
+
+                const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+                res.cookie("token", token, {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: "Strict"
+                });
+
+                res.json({ message: "Login successful", token});
             } else {
                 // รหัสผ่านไม่ถูกต้อง
                 res.status(401).json({ message: "Invalid email or password" });
