@@ -77,6 +77,8 @@ document.getElementById('login-container').addEventListener('submit', function (
                 alert('Login successful!');
                 onLoginSuccess();
                 closeLoginModal();
+                const token = data.token;  // ดึง token จาก response
+                localStorage.setItem('token', token);  // บันทึก token ไว้ใช้งาน
             }
         })
         .catch((error) => {
