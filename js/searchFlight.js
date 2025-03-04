@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 let timeout = null; // ใช้ป้องกันการเรียก API ถี่เกินไป
 
 async function searchFromData() {
@@ -86,7 +84,7 @@ async function showFlight() {
 
     // เรียก API โดยใช้ query parameters แทน body
     fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}`, {
-        method: 'GET',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
