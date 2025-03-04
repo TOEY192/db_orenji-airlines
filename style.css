@@ -490,6 +490,7 @@ a {
     width: 400px;
     height: 400px;
     background-color: var(--main_color);
+    display: none;
 }
 
 .flightList {
