@@ -213,7 +213,7 @@ app.post('/show-flight', async (req, res) => {
         const arrivalId = arrivalResult[0].airport_id;
 
         // ค้นหาเที่ยวบิน
-        const flightSql = 'SELECT flight_code FROM Flights WHERE departure_airport_id = ? AND arrival_airport_id = ?';
+        const flightSql = 'SELECT flight_code, departure_time, arrival_time FROM Flights WHERE departure_airport_id = ? AND arrival_airport_id = ?';
         const [flights] = await connection.promise().query(flightSql, [departureId, arrivalId]);
 
         res.json(flights); // ส่งผลลัพธ์กลับไป
