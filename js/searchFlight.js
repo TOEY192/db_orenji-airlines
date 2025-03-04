@@ -85,6 +85,8 @@ async function showFlight() {
     const adults = document.getElementById("adult-count").value;
     const children = document.getElementById("child-count").value;
 
+    console.log(from, dest, date, adults, children)
+
     if (!from || !dest || !date) {
         alert("กรุณากรอกข้อมูลให้ครบถ้วน");
         return;
