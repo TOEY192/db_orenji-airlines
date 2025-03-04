@@ -104,6 +104,7 @@ async function showFlight() {
         ul.innerHTML = ""; // ล้างข้อมูลเก่า ก่อนเริ่ม loop
 
         if (data.length > 0) {
+            document.getElementById('flight').classList.add("show")
             data.forEach(flight => {
                 let li = document.createElement("li");
                 let btn = document.createElement("button");
@@ -113,7 +114,7 @@ async function showFlight() {
                 ul.appendChild(li);
             });
         } else {
-            ul.innerHTML = "<li>ไม่พบเที่ยวบิน</li>"; // แสดงข้อความเมื่อไม่มีเที่ยวบิน
+            document.getElementById('flight').classList.remove("show")
         }
     })
     .catch(error => {
