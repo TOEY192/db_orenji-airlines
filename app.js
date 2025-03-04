@@ -180,7 +180,6 @@ app.post('/edit-info', authenticateToken, (req, res) => {
 
 app.post('/logout', (req, res) => {
     res.clearCookie('token');
-    res.redirect('/login');
 });
 
 
