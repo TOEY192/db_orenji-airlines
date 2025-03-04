@@ -34,8 +34,8 @@ async function searchFromData() {
                 resultList.appendChild(li);
             });
         } else {
-            document.getElementById("result-destination-list").innerHTML = "";
-            document.getElementById("result-destination-list").classList.remove("show");
+            document.getElementById("result-from-list").innerHTML = "";
+            document.getElementById("result-from-list").classList.remove("show");
         }
     }, 300); // ดีเลย์ 300ms เพื่อป้องกันโหลด API มากเกินไป
 }
