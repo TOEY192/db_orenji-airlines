@@ -189,7 +189,7 @@ function onLogout() {
     })
     .then(response => {
         if (response.ok) {
-            document.cookie = "isLoggedIn=; path=/";
+            document.cookie = "isLoggedIn=false; path=/";
             location.reload();
         } else {
             console.error('Logout failed');
