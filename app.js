@@ -3,6 +3,8 @@ const mysql = require('mysql2');
 require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
+const moment = require('moment');
+
 const app = express();
 const port = process.env.PORT || 3306;
 
@@ -250,6 +252,7 @@ app.get('/show-flight', async (req, res) => {
 });
 
 app.get('/update-flight', (req, res) => {
-    const moment = require('moment');
-    res.send(moment);
+    const formattedTime = currentTime.format('YYYY-MM-DD HH:mm:ss');
+    console.log(formattedTime);
+    res.send(formattedTime);
 })
