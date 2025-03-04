@@ -462,7 +462,8 @@ a {
 }
 
 /* แสดง dropdown เมื่อมีผลลัพธ์ */
-.show {
+.dropdown-list.show,
+.flight.show {
     display: block;
 }
 
