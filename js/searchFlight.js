@@ -81,10 +81,11 @@ async function searchDestinationData() {
 }
 
 async function showFlight() {
-    const from = document.getElementById('from-input').value
-    const dest = document.getElementById('to-input').value
+    const from = document.getElementById('from-input').value;
+    const dest = document.getElementById('to-input').value;
 
-    fetch('https://db-orenji-airlines.onrender.com/show-flight', {
+    // เรียก API โดยใช้ query parameters แทน body
+    fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -93,21 +94,23 @@ async function showFlight() {
             departure_airport_name: from,
             arrival_airport_name: dest
         })
-        .then(response => response.json())
-        .then(data => {
-            if(data.length > 0){
-                data.forEach(flight => {
-                    let li = document.createElement("li");
-                    let ul = document.getElementById('goWhere');
-                    ul.innerHTML = "";
-    
-                    li.textContent = flight.flight_code;
-                    ul.appendChild(li);
-                })
-            }
-            else {
-                document.getElementById('goWhere').innerHTML = "";
-            }
-        })
     })
+    .then(response => response.json())
+    .then(data => {
+        let ul = document.getElementById('goWhere');
+        ul.innerHTML = ""; // ล้างข้อมูลเก่า ก่อนเริ่ม loop
+
+        if (data.length > 0) {
+            data.forEach(flight => {
+                let li = document.createElement("li");
+                li.textContent = flight.flight_code;
+                ul.appendChild(li);
+            });
+        } else {
+            ul.innerHTML = "<li>ไม่พบเที่ยวบิน</li>"; // แสดงข้อความเมื่อไม่มีเที่ยวบิน
+        }
+    })
+    .catch(error => {
+        console.error("❌ เกิดข้อผิดพลาด:", error);
+    });
 }
