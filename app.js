@@ -192,3 +192,33 @@ app.get("/search", (req, res) => {
         res.json(results);
     });
 });
+
+app.get('/show-flight', async (req, res) => {
+    try {
+        // รับค่าจาก Query String
+        const { departure_airport_name, arrival_airport_name } = req.body; 
+
+        // ดึง airport_id จากชื่อสนามบิน
+        const sql = 'SELECT airport_id FROM Airports WHERE name = ?';
+
+        const [departureResult] = await connection.promise().query(sql, [departure_airport_name]);
+        const [arrivalResult] = await connection.promise().query(sql, [arrival_airport_name]);
+
+        // ตรวจสอบว่าเจอสนามบินหรือไม่
+        if (departureResult.length === 0 || arrivalResult.length === 0) {
+            return res.status(404).json({ error: "สนามบินไม่พบ" });
+        }
+
+        const departureId = departureResult[0].airport_id;
+        const arrivalId = arrivalResult[0].airport_id;
+
+        // ค้นหาเที่ยวบิน
+        const flightSql = 'SELECT flight_code FROM Flights WHERE departure_airport_id = ? AND arrival_airport_id = ?';
+        const [flights] = await connection.promise().query(flightSql, [departureId, arrivalId]);
+
+        res.json(flights); // ส่งผลลัพธ์กลับไป
+    } catch (error) {
+        console.error("❌ Error:", error);
+        res.status(500).json({ error: "เกิดข้อผิดพลาดภายในเซิร์ฟเวอร์" });
+    }
+});

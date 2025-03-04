@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 let timeout = null; // ใช้ป้องกันการเรียก API ถี่เกินไป
 
 async function searchFromData() {
@@ -82,9 +84,30 @@ async function showFlight() {
     const from = document.getElementById('from-input').value
     const dest = document.getElementById('to-input').value
 
-    console.log(from + dest)
-
-    const goWhere = from + dest;
-    let p = document.getElementById('goWhere')
-    p.innerHTML = goWhere;
+    fetch('https://db-orenji-airlines.onrender.com/show-flight', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            departure_airport_name: departure_airport_name,
+            arrival_airport_name: arrival_airport_name
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.length > 0){
+                data.forEach(flight => {
+                    let li = document.createElement("li");
+                    let ul = document.getElementById('goWhere');
+                    ul.innerHTML = "";
+    
+                    li.textContent = flight.flight_code;
+                    ul.appendChild(li);
+                })
+            }
+            else {
+                document.getElementById('goWhere').innerHTML = "";
+            }
+        })
+    })
 }
