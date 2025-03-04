@@ -44,15 +44,17 @@ async function searchDestinationData() {
     clearTimeout(timeout); // เคลียร์ timer ก่อนหน้า
     timeout = setTimeout(async () => {
         let query = document.getElementById("to-input").value;
+        console.log({query})
         if (query.length > 0) { // ค้นหาเมื่อมีตัวอักษร
             let response = await fetch(`/search?q=${query}`);
             let data = await response.json();
-
+            console.log({data})
             let resultList = document.getElementById("result-destination-list");
             resultList.innerHTML = ""; // ล้างรายการเก่า
             resultList.classList.add("show"); // แสดง dropdown
 
             data.forEach(item => {
+                console.log(item)
                 let li = document.createElement("li");
 
                 // สร้าง <a> tag
@@ -63,7 +65,7 @@ async function searchDestinationData() {
 
                 // เมื่อคลิกที่ <a> จะเปลี่ยนค่าใน input
                 li.addEventListener('click', () => {
-                    document.getElementById("to-input").value = item.name; // แสดงค่าที่เลือกในช่องค้นหา
+                    document.getElementById("from-input").value = item.name; // แสดงค่าที่เลือกในช่องค้นหา
                     resultList.innerHTML = ""; // ล้างรายการหลังเลือก
                     resultList.classList.remove("show"); // ซ่อน dropdown หลังเลือก
                 });
@@ -73,7 +75,7 @@ async function searchDestinationData() {
             });
         } else {
             document.getElementById("result-destination-list").innerHTML = "";
-            document.getElementById("result-destination-list").classList.remove("show"); 
+            document.getElementById("result-destination-list").classList.remove("show");
         }
     }, 300); // ดีเลย์ 300ms เพื่อป้องกันโหลด API มากเกินไป
 }
