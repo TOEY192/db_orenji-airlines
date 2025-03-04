@@ -43,6 +43,25 @@ a {
     margin-left: auto;
 }
 
+.home-btn {
+    padding: 10px clamp(15px, 3vw, 25px);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+    background-color: var(--white);
+    color: var(--main_color);
+    border: var(--border_btn);
+}
+
+.home-btn:hover {
+    background-color: var(--main_color);
+    color: var(--white);
+}
+
 .login-btn,
 .register-btn,
 .logout-btn {
@@ -264,7 +283,7 @@ a {
     object-fit: cover;
     /* คงสัดส่วนและไม่ยืดภาพ */
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     margin-top: 10px;
     top: 0;
     left: 100%;
@@ -334,17 +353,16 @@ a {
     /* การตั้งค่า box-sizing เพื่อให้กรอบไม่เกินขนาดที่กำหนด */
 }
 
-#daparture-date{
-    height:30px;
-    width:100%;
-    margin-top:24px;
-    
+#daparture-date {
+    height: 30px;
+    width: 100%;
+    margin-top: 24px;
+
 }
 
 #adult-count,
-#child-count
-{
-    width:50px
+#child-count {
+    width: 50px
 }
 
 /* ปรับขนาดช่องค้นหา */
@@ -391,7 +409,8 @@ a {
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-.fa-solid, .fas {
+.fa-solid,
+.fas {
     display: flex;
 }
 
@@ -406,7 +425,8 @@ a {
 /* สไตล์ของรายการผลลัพธ์ใน dropdown */
 .dropdown-list {
     position: absolute;
-    top: 100%; /* ให้ dropdown อยู่ด้านล่างของ input */
+    top: 100%;
+    /* ให้ dropdown อยู่ด้านล่างของ input */
     left: 0;
     width: 100%;
     background-color: #fff;
@@ -414,11 +434,13 @@ a {
     border-radius: 4px;
     max-height: 200px;
     overflow-y: auto;
-    display: none; /* ซ่อนเมื่อไม่มีผลลัพธ์ */
+    display: none;
+    /* ซ่อนเมื่อไม่มีผลลัพธ์ */
     margin-top: 4px;
     padding: 0;
     box-sizing: border-box;
-    z-index: 2; /* ให้ dropdown อยู่ด้านหน้า input */
+    z-index: 2;
+    /* ให้ dropdown อยู่ด้านหน้า input */
 }
 
 /* สไตล์ของแต่ละรายการ */
@@ -480,3 +502,38 @@ a {
         flex-wrap: wrap;
     }
 }
+
+    .edit-info-container input,
+    .edit-info-container button {
+        width: 70%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .edit-info-container button:hover {
+        background-color: #aaa
+    }
+
+    .body-Modal {
+        background: #ccc;
+        width: 500px;
+        height: 500px;
+        border-radius: 5px;
+        border: 3px solid #000000;
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .edit-history input,
+    .edit-history button {
+        border-radius: 5px;
+        width: 60%;
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .edit-history button:hover {
+        background-color: #aaa
+    }
