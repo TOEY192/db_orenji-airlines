@@ -457,7 +457,7 @@ a {
 }
 
 /* แสดง dropdown เมื่อมีผลลัพธ์ */
-.dropdown-list.show {
+.show {
     display: block;
 }
 
