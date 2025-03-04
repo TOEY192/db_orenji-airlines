@@ -137,6 +137,7 @@ app.get('/user-profile', (req, res) => {
         if (err) {
             return res.status(500).send(err);
         }
+        console.log(results)
         res.json(results);
     })
 })

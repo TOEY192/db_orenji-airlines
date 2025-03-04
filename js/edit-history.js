@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const token = localStorage.getItem('token');
+
+        console.log(token)
         // เรียก API เพื่อดึงข้อมูลโปรไฟล์ของผู้ใช้
         await fetch("https://db-orenji-airlines.onrender.com/user-profile", {
             method: "GET",
