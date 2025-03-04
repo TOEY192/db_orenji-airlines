@@ -85,5 +85,6 @@ async function showFlight() {
     console.log(from + dest)
 
     const goWhere = from + dest;
+    document.getElementById('goWhere').innerHTML = "";
     document.getElementById('goWhere').innerHTML = goWhere;
 }
