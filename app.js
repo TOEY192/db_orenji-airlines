@@ -253,6 +253,9 @@ app.get('/show-flight', async (req, res) => {
 
 app.get('/update-flight', (req, res) => {
     const currentTime = moment().tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss');
-    console.log(currentTime);
-    res.send(currentTime);
+    const sql = 'SELECT flight_code FROM Flights WHERE departure_time <= ?';
+    connection.query(sql, [currentTime], (err, results) => {
+        console.log(results);
+        res.send(results);
+    })
 })
