@@ -258,7 +258,7 @@ app.get('/update-flight', async (req, res) => {
     flights.forEach(async flight => {
         const newDepartureTime = moment(flight.departure_time).add(2, 'weeks').format('YYYY-MM-DD HH:mm:ss');
         const newArrivalTime = moment(flight.arrival_time).add(2, 'weeks').format('YYYY-MM-DD HH:mm:ss');
-        const sqlUpdate = 'UPDATE Flights SET departure_time = ? and arrival_time = ? WHERE flight_code = ?'
+        const sqlUpdate = 'UPDATE Flights SET departure_time = ?, arrival_time = ? WHERE flight_code = ?'
         const newUpdate = await connection.promise().query(sqlUpdate, [newDepartureTime, newArrivalTime, flight.flight_code])
         console.log(newUpdate)
     })
