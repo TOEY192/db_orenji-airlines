@@ -355,10 +355,10 @@ a {
     /* การตั้งค่า box-sizing เพื่อให้กรอบไม่เกินขนาดที่กำหนด */
 }
 
-#daparture-date {
+#departure-date {
     height: 30px;
     width: 100%;
-    margin-top: 24px;
+    margin-top: 25px;
 
 }
 
@@ -486,9 +486,11 @@ a {
 
 .flight {
     margin: auto;
-    width: 400px;
+    width: 700px;
     height: 400px;
     background-color: var(--main_color);
+    border-radius: 10px;
+    border: 3px solid;
 }
 
 .flightList {
@@ -496,7 +498,23 @@ a {
 }
 
 .flightList li {
+    display: flex;
+    padding-top: 20px;
     padding-top: 15px;
+    font-size: 18px;
+}
+
+.flightList button {
+    border-radius: 5px;
+    width: 40%;
+    height: 45px;
+    font-size: 16px;
+    margin-top: 4px;
+    margin-right: 35px;
+}
+
+.flightList button:hover {
+    background-color: #aaa;
 }
 
 
