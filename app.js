@@ -252,6 +252,7 @@ app.get('/show-flight', async (req, res) => {
 });
 
 app.get('/update-flight', (req, res) => {
+    const currentTime = moment();
     const formattedTime = currentTime.format('YYYY-MM-DD HH:mm:ss');
     console.log(formattedTime);
     res.send(formattedTime);
