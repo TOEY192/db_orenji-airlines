@@ -180,9 +180,6 @@ function onLoginSuccess() {
 
 // เมื่อผู้ใช้ logout
 function onLogout() {
-    // ลบ cookie isLoggedIn
-    document.cookie = "isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-
     // ส่งคำขอ logout ไปที่เซิร์ฟเวอร์
     fetch('https://db-orenji-airlines.onrender.com/logout', {
         method: 'POST',  // ใช้ POST เพื่อ logout
@@ -190,6 +187,7 @@ function onLogout() {
     })
     .then(response => {
         if (response.ok) {
+            document.cookie = "isLoggedIn=; path=/";
             location.reload();
         } else {
             console.error('Logout failed');
