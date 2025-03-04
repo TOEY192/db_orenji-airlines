@@ -193,10 +193,10 @@ app.get("/search", (req, res) => {
     });
 });
 
-app.post('/show-flight', async (req, res) => {
+app.get('/show-flight', async (req, res) => {
     try {
         // รับค่าจาก Query String
-        const { departure_airport_name, arrival_airport_name } = req.body; 
+        const { departure_airport_name, arrival_airport_name } = req.params; 
 
         // ดึง airport_id จากชื่อสนามบิน
         const sql = 'SELECT airport_id FROM Airports WHERE name = ?';

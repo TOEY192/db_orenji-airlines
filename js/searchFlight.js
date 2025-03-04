@@ -85,24 +85,15 @@ async function showFlight() {
     const adults = document.getElementById("adult-count").value;
     const children = document.getElementById("child-count").value;
 
-    if (!from || !to || !date) {
+    if (!from || !dest || !date) {
         alert("กรุณากรอกข้อมูลให้ครบถ้วน");
         return;
     }
 
-    console.log(`ค้นหาเที่ยวบินจาก ${from} ไป ${to} วันที่ ${date}, ผู้ใหญ่: ${adults}, เด็ก: ${children}`);
+    console.log(`ค้นหาเที่ยวบินจาก ${from} ไป ${dest} วันที่ ${date}, ผู้ใหญ่: ${adults}, เด็ก: ${children}`);
 
     // เรียก API โดยใช้ query parameters แทน body
-    fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            departure_airport_name: from,
-            arrival_airport_name: dest
-        })
-    })
+    fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}`)
     .then(response => response.json())
     .then(data => {
         let ul = document.getElementById('goWhere');
