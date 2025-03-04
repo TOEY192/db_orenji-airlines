@@ -84,6 +84,7 @@ app.post("/login", async (req, res) => {
 })
 
 const jwt = require('jsonwebtoken');
+const { result } = require('lodash');
 
 // REGISTER API
 app.post("/register", (req, res) => {
@@ -119,6 +120,17 @@ app.post("/register", (req, res) => {
         });
     });
 });
+
+app.get('/user-profile', (req, res) => {
+    const username = req.user.username;
+    const sql = 'SELECT firstName, lastName, email, phone FROM users WHERE username = ?';
+    connection.query(sql, [username], (err, results) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.json(results);
+    })
+})
 
 function authenticateToken(req, res, next) {
     // รับ token จาก header 'Authorization'
