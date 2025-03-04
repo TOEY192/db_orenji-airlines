@@ -34,8 +34,8 @@ async function searchFromData() {
                 resultList.appendChild(li);
             });
         } else {
-            resultList.innerHTML = ""; // ล้างรายการถ้าไม่มีค่า
-            resultList.classList.remove("show"); // ซ่อน dropdown ถ้าไม่มีค่า
+            document.getElementById("result-from-list").innerHTML = "";
+            document.getElementById("result-from-list").classList.remove("show");
         }
     }, 300); // ดีเลย์ 300ms เพื่อป้องกันโหลด API มากเกินไป
 }
@@ -72,8 +72,8 @@ async function searchDestinationData() {
                 resultList.appendChild(li);
             });
         } else {
-            document.getElementById("result-destination-list").innerHTML = ""; // ล้างรายการถ้าไม่มีค่า
-            document.getElementById("result-destination-list").classList.remove("show"); // ซ่อน dropdown ถ้าไม่มีค่า
+            document.getElementById("result-destination-list").innerHTML = "";
+            document.getElementById("result-destination-list").classList.remove("show"); 
         }
     }, 300); // ดีเลย์ 300ms เพื่อป้องกันโหลด API มากเกินไป
 }
