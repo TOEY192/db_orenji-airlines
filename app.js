@@ -248,3 +248,8 @@ app.get('/show-flight', async (req, res) => {
         res.status(500).json({ error: "เกิดข้อผิดพลาดภายในเซิร์ฟเวอร์" });
     }
 });
+
+app.get('/update-flight', (req, res) => {
+    const moment = require('moment');
+    res.send(moment);
+})
