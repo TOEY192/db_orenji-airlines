@@ -197,6 +197,8 @@ app.get('/show-flight', async (req, res) => {
     try {
         // รับค่าจาก Query String
         const { departure_airport_name, arrival_airport_name, date } = req.query; 
+        const departure_time_f = date + " 00:00:00"
+        const departure_time_l = date + " 23:59:59"
 
         // ดึง airport_id จากชื่อสนามบิน
         const sql = 'SELECT airport_id FROM Airports WHERE name = ?';
