@@ -244,3 +244,20 @@ function moveSlide(direction) {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        await fetch("https://db-orenji-airlines.onrender.com/update-flight", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+
+    } catch (error) {
+        console.error("Error update flight:", error);
+    }
+});
