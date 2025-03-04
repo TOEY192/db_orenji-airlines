@@ -450,3 +450,7 @@ a {
     height: 400px;
     background-color: var(--main_color);
 }
+
+.flightList {
+    list-style: none;
+}

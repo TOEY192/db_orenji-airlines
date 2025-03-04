@@ -101,7 +101,7 @@ async function showFlight() {
         if (data.length > 0) {
             data.forEach(flight => {
                 let li = document.createElement("li");
-                li.textContent = flight.flight_code;
+                li.textContent = flight.flight_code + " departure_time: " + flight.departure_time + " arrival_time: " + flight.arrival_time;
                 ul.appendChild(li);
             });
         } else {
