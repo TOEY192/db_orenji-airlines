@@ -190,7 +190,7 @@ function onLogout() {
     })
     .then(response => {
         if (response.ok) {
-            window.location.href = "/";
+            location.reload();
         } else {
             console.error('Logout failed');
         }
