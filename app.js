@@ -178,10 +178,6 @@ app.post('/edit-info', authenticateToken, (req, res) => {
     });
 });
 
-app.post('/logout', (req, res) => {
-    res.clearCookie('token');
-});
-
 
 //ขั้นตอน booking เลือกว่าจะไปไหน แล้วเลือกจำนวนคน แล้วเลือกเที่ยวบิน และเลือกชั้น และราคาจะแสดออกมา
 app.post('/booking', (req, res) => {
