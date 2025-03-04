@@ -340,7 +340,7 @@ a {
     gap: 15px;
     width: 80%;
     /* ขนาดของกรอบอยู่ที่ 80% ของหน้าจอ */
-    max-width: 700px;
+    /*max-width: 700px;)*/
     /* กำหนดความกว้างสูงสุด */
     margin: 20px auto;
     /* จัดกลาง */
@@ -356,9 +356,14 @@ a {
 }
 
 #departure-date {
-    height: 30px;
+    height:60px;
     width: 100%;
-    margin-top: 25px;
+    padding: 12px;
+    margin:12px 0;
+    font-size: 16px;
+    border-radius:5px;
+    box-sizing:border-box;
+    border:2px solid #d3d3d3;
 
 }
 
@@ -486,11 +491,17 @@ a {
 
 .flight {
     margin: auto;
-    width: 700px;
-    height: 400px;
+    width: 80%;
+    height: auto;
     background-color: var(--main_color);
     border-radius: 10px;
     border: 3px solid;
+}
+
+@media (max-width: 768px) {
+    .flight{
+        flex-wrap:wrap;
+    }
 }
 
 .flightList {
@@ -507,7 +518,7 @@ a {
 .flightList button {
     border-radius: 5px;
     width: 40%;
-    height: 45px;
+    height: auto;
     font-size: 16px;
     margin-top: 4px;
     margin-right: 35px;
@@ -594,7 +605,7 @@ a {
         border-radius: 5px;
         width: 60%;
         padding: 12px;
-        margin: 10px 0;
+        margin: 10px;
     }
 
     .edit-history button:hover {
