@@ -90,8 +90,8 @@ async function showFlight() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            departure_airport_name: departure_airport_name,
-            arrival_airport_name: arrival_airport_name
+            departure_airport_name: from,
+            arrival_airport_name: dest
         })
         .then(response => response.json())
         .then(data => {
