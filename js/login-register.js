@@ -1,3 +1,5 @@
+const { update } = require("lodash");
+
 function openRegisterModal() {
     document.getElementById("registerModal").style.display = "block";
     setTimeout(() => {
@@ -247,6 +249,7 @@ function moveSlide(direction) {
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
+        console.log("Update flights")
         await fetch("https://db-orenji-airlines.onrender.com/update-flight", {
             method: "GET",
             headers: {
