@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
         .then(data => {
             console.log(data)
-            document.getElementById('name').innerHTML = userData.firstName + " " + userData.lastName;
+            document.getElementById('name').innerHTML = data.firstName + " " + data.lastName;
         })
 
         // นำข้อมูลมาใส่ใน placeholder
