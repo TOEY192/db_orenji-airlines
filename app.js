@@ -129,7 +129,7 @@ app.post("/register", (req, res) => {
     });
 });
 
-app.get('/user-profile', (req, res) => {
+app.get('/user-profile', authenticateToken, (req, res) => {
     const username = req.user.username;
     console.log("username is " , username)
     const sql = 'SELECT firstName, lastName, email, phone FROM users WHERE username = ?';
