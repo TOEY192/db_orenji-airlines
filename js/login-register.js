@@ -1,5 +1,3 @@
-const { update } = require("lodash");
-
 function openRegisterModal() {
     document.getElementById("registerModal").style.display = "block";
     setTimeout(() => {
