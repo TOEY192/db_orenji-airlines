@@ -97,7 +97,7 @@ async function showFlight() {
     console.log(`ค้นหาเที่ยวบินจาก ${from} ไป ${dest} วันที่ ${date}, ผู้ใหญ่: ${adults}, เด็ก: ${children}`);
 
     // เรียก API โดยใช้ query parameters แทน body
-    fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}`)
+    fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}&date=${encodeURIComponent(date)}`)
     .then(response => response.json())
     .then(data => {
         let ul = document.getElementById('goWhere');
@@ -106,7 +106,10 @@ async function showFlight() {
         if (data.length > 0) {
             data.forEach(flight => {
                 let li = document.createElement("li");
+                let btn = document.createElement("button");
+                btn.textContent = "choose this flight";
                 li.textContent = flight.flight_code + " departure_time: " + flight.departure_time + " arrival_time: " + flight.arrival_time;
+                li.appendChild(btn)
                 ul.appendChild(li);
             });
         } else {
