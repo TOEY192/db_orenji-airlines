@@ -202,8 +202,8 @@ app.get('/show-flight', async (req, res) => {
         // ดึง airport_id จากชื่อสนามบิน
         const sql = 'SELECT airport_id FROM Airports WHERE name = ?';
 
-        const [departureResult] = await connection.promise().query(sql, [departure_airport_name]);
-        const [arrivalResult] = await connection.promise().query(sql, [arrival_airport_name]);
+        const departureResult = await connection.promise().query(sql, [departure_airport_name]);
+        const arrivalResult = await connection.promise().query(sql, [arrival_airport_name]);
 
         // ตรวจสอบว่าเจอสนามบินหรือไม่
         if (departureResult.length === 0 || arrivalResult.length === 0) {
