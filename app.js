@@ -123,6 +123,7 @@ app.post("/register", (req, res) => {
 
 app.get('/user-profile', (req, res) => {
     const username = req.user.username;
+    console.log("username is " , username)
     const sql = 'SELECT firstName, lastName, email, phone FROM users WHERE username = ?';
     connection.query(sql, [username], (err, results) => {
         if (err) {
