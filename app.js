@@ -210,8 +210,8 @@ app.get('/show-flight', async (req, res) => {
             return res.status(404).json({ error: "สนามบินไม่พบ" });
         }
         
-        const [departureId] = departureResult[0].airport_id;
-        const [arrivalId] = arrivalResult[0].airport_id;
+        const {departureId} = departureResult[0].airport_id;
+        const {arrivalId} = arrivalResult[0].airport_id;
 
         console.log("output: ", departureId, arrivalId)
         // ค้นหาเที่ยวบิน
