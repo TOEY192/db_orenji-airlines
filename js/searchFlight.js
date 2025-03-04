@@ -81,6 +81,16 @@ async function searchDestinationData() {
 async function showFlight() {
     const from = document.getElementById('from-input').value;
     const dest = document.getElementById('to-input').value;
+    const date = document.getElementById("departure-date").value;
+    const adults = document.getElementById("adult-count").value;
+    const children = document.getElementById("child-count").value;
+
+    if (!from || !to || !date) {
+        alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return;
+    }
+
+    console.log(`ค้นหาเที่ยวบินจาก ${from} ไป ${to} วันที่ ${date}, ผู้ใหญ่: ${adults}, เด็ก: ${children}`);
 
     // เรียก API โดยใช้ query parameters แทน body
     fetch(`https://db-orenji-airlines.onrender.com/show-flight?departure_airport_name=${encodeURIComponent(from)}&arrival_airport_name=${encodeURIComponent(dest)}`, {
