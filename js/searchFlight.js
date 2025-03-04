@@ -65,7 +65,7 @@ async function searchDestinationData() {
 
                 // เมื่อคลิกที่ <a> จะเปลี่ยนค่าใน input
                 li.addEventListener('click', () => {
-                    document.getElementById("from-input").value = item.name; // แสดงค่าที่เลือกในช่องค้นหา
+                    document.getElementById("to-input").value = item.name; // แสดงค่าที่เลือกในช่องค้นหา
                     resultList.innerHTML = ""; // ล้างรายการหลังเลือก
                     resultList.classList.remove("show"); // ซ่อน dropdown หลังเลือก
                 });
