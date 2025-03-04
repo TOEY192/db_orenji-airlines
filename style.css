@@ -43,11 +43,7 @@ a {
     margin-left: auto;
 }
 
-<<<<<<< HEAD
-.home-btn{
-=======
 .home-btn {
->>>>>>> temp-branch
     padding: 10px clamp(15px, 3vw, 25px);
     border-radius: 20px;
     cursor: pointer;
@@ -61,11 +57,8 @@ a {
     border: var(--border_btn);
 }
 
-<<<<<<< HEAD
-.home-btn:hover{
-=======
+
 .home-btn:hover {
->>>>>>> temp-branch
     background-color: var(--main_color);
     color: var(--white);
 }
@@ -505,7 +498,7 @@ a {
     padding-top: 15px;
 }
 
-<<<<<<< HEAD
+
 .edit-info-container input,
 .edit-info-container button
 {
@@ -541,7 +534,7 @@ a {
 .edit-history button:hover {
     background-color:#aaa
 }
-=======
+
 @media (max-width: 768px) {
     .search-container {
         flex-wrap: wrap;
@@ -582,4 +575,3 @@ a {
     .edit-history button:hover {
         background-color: #aaa
     }
->>>>>>> temp-branch
