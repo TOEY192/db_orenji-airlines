@@ -251,11 +251,12 @@ app.get('/show-flight', async (req, res) => {
     }
 });
 
-app.get('/update-flight', (req, res) => {
+app.get('/update-flight', async (req, res) => {
     const currentTime = moment().tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss');
-    const sql = 'SELECT flight_code FROM Flights WHERE departure_time <= ?';
-    connection.query(sql, [currentTime], (err, results) => {
-        console.log(results);
-        res.send(results);
+    const sql = 'SELECT flight_code, departure_time FROM Flights WHERE departure_time <= ?';
+    const [flights] = await connection.promise().query(sql, [currentTime])
+    flights.forEach(flight => {
+        console.log(flight + " " + moment(flight.departure_time).add(2, 'weeks').format('YYYY-MM-DD HH:mm:ss'))
     })
+    res.send(flights)
 })
