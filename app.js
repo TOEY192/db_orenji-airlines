@@ -256,7 +256,8 @@ app.get('/update-flight', async (req, res) => {
     const sql = 'SELECT flight_code, departure_time FROM Flights WHERE departure_time <= ?';
     const [flights] = await connection.promise().query(sql, [currentTime])
     flights.forEach(flight => {
-        console.log(flight + " " + moment(flight.departure_time).add(2, 'weeks').format('YYYY-MM-DD HH:mm:ss'))
+        const newDepartureTime = moment(flight.departure_time).add(2, 'weeks').format('YYYY-MM-DD HH:mm:ss');
+        console.log(flight + " " + newDepartureTime)
     })
     res.send(flights)
 })
