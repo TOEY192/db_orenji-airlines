@@ -198,18 +198,18 @@ app.get('/show-flight', async (req, res) => {
         // รับค่าจาก Query String
         const { departure_airport_name, arrival_airport_name } = req.params; 
 
-        console.log(departure_airport_name, arrival_airport_name )
         // ดึง airport_id จากชื่อสนามบิน
         const sql = 'SELECT airport_id FROM Airports WHERE name = ?';
-
+        
         const departureResult = await connection.promise().query(sql, [departure_airport_name]);
         const arrivalResult = await connection.promise().query(sql, [arrival_airport_name]);
-
+        
         // ตรวจสอบว่าเจอสนามบินหรือไม่
         if (departureResult.length === 0 || arrivalResult.length === 0) {
             return res.status(404).json({ error: "สนามบินไม่พบ" });
         }
-
+        console.log("output: ", departure_airport_name, arrival_airport_name, departureResult, arrivalResult)
+        
         const departureId = departureResult[0].airport_id;
         const arrivalId = arrivalResult[0].airport_id;
 
