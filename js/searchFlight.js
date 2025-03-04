@@ -114,6 +114,7 @@ async function showFlight() {
                 ul.appendChild(li);
             });
         } else {
+            alert("ไม่พบเที่ยวบินที่ค้นหา")
             document.getElementById('flight').classList.remove("show")
         }
     })
