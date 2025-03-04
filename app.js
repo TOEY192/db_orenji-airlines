@@ -218,7 +218,7 @@ app.get('/show-flight', async (req, res) => {
         console.log("output: ", departureId, arrivalId)
         // ค้นหาเที่ยวบิน
         const flightSql = 'SELECT flight_code, departure_time, arrival_time FROM Flights WHERE departure_airport_id = ? AND arrival_airport_id = ? AND departure_time >= ? AND departure_time < ?';
-        const [flights] = await connection.promise().query(flightSql, [departureId, arrivalId, date, date]);
+        const [flights] = await connection.promise().query(flightSql, [departureId, arrivalId, departure_time_f, departure_time_l]);
 
         res.json(flights); // ส่งผลลัพธ์กลับไป
     } catch (error) {
