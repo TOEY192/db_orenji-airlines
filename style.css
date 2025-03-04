@@ -315,6 +315,7 @@ a {
 .search-container {
     position: relative;
     display: flex;
+    flex-wrap: nowrap;
     gap: 15px;
     width: 80%;
     /* ขนาดของกรอบอยู่ที่ 80% ของหน้าจอ */
@@ -472,4 +473,10 @@ a {
 
 .flightList li {
     padding-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        flex-wrap: wrap;
+    }
 }
