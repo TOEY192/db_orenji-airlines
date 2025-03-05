@@ -8,9 +8,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         let data = await response.json();
 
         const fclass = document.getElementById('first-class');
+        fclass.innerHTML = "";
         for(let i = 0; i < 5; i++) {
             let li = document.createElement("li");
-            li.textContent = data.seat_number
+            li.textContent = data[i].seat_number
             fclass.appendChild(li)
         }
     } catch (error) {
