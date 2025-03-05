@@ -39,7 +39,7 @@ document.getElementById('edit-profile-from').addEventListener('submit', async (e
         const email = document.querySelector("[name='email']").value;
 
         console.log(fname, lname , email)
-        if(fname) {
+        if(fname != '') {
             await fetch('https://db-orenji-airlines.onrender.com/edit-fname', {
                 method: "POST",
                 headers: {
