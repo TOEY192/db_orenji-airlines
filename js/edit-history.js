@@ -18,9 +18,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.log(data)
             console.log(data[0].firstName)
             console.log(data[0].lastName)
-            document.getElementById('name').innerHTML = data[0].firstName + " " + data[0].lastName;
-            document.getElementById('email').innerHTML = data[0].email;
-            document.getElementById('passportNumber').innerHTML = data[0].passportNumber;
+            document.getElementById('fname').placeholder = data[0].firstName;
+            document.getElementById('lname').placeholder = data[0].lastName;
+            document.getElementById('email').placeholder = data[0].email;
+            document.getElementById('passportNumber').placeholder = data[0].passportNumber;
         })
 
         // นำข้อมูลมาใส่ใน placeholder
@@ -29,3 +30,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Error loading profile:", error);
     }
 });
+
+document.getElementById('edit-profile-from').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const fname = document.querySelector("[name='fname']").value;
+    const lname = document.querySelector("[name='lname']").value;
+    const email = document.querySelector("[name='email']").value;
+    console.log(fname, lname , email)
+})
