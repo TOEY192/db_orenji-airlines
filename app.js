@@ -94,7 +94,7 @@ app.post("/login", async (req, res) => {
 })
 
 const jwt = require('jsonwebtoken');
-const { result } = require('lodash');
+const { result, constant } = require('lodash');
 
 // REGISTER API
 app.post("/register", (req, res) => {
@@ -179,6 +179,14 @@ app.post('/edit-info', authenticateToken, (req, res) => {
         });
     });
 });
+
+app.post('/edit-fname', authenticateToken, async (req, res) => {
+    const username = req.user.username;
+    const { fname } = req.body;
+    const sql = 'UPDATE users SET firstName = ? WHERE username = ?'
+    const updateFname = await connection.promise().query(sql, [fname, username])
+    res.json(updateFname)
+})
 
 
 //ขั้นตอน booking เลือกว่าจะไปไหน แล้วเลือกจำนวนคน แล้วเลือกเที่ยวบิน และเลือกชั้น และราคาจะแสดออกมา
