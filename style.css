@@ -432,7 +432,7 @@ a {
 /* สไตล์ของรายการผลลัพธ์ใน dropdown */
 .dropdown-list {
     position: absolute;
-    top: 100%;
+    top: 50%;
     /* ให้ dropdown อยู่ด้านล่างของ input */
     left: 0;
     width: 100%;
@@ -443,7 +443,7 @@ a {
     overflow-y: auto;
     display: none;
     /* ซ่อนเมื่อไม่มีผลลัพธ์ */
-    margin-top: 4px;
+    margin-top: 3%px;
     padding: 0;
     box-sizing: border-box;
     z-index: 2;
