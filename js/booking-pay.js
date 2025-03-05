@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             let li = document.createElement("li");
             let btn = document.createElement("button")
             if(data[i].status == "Available") {
-                btn.style.backgroundColor = "green"
+                btn.style.backgroundColor = "#dfa754"
             }
             btn.textContent = data[i].seat_number;
             li.appendChild(btn);
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             let li = document.createElement("li");
             let btn = document.createElement("button")
             if(data[i].status == "Available") {
-                btn.style.backgroundColor = "green"
+                btn.style.backgroundColor = "#dfa754"
             }
             btn.textContent = data[i].seat_number;
             li.appendChild(btn);
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             let li = document.createElement("li");
             let btn = document.createElement("button")
             if(data[i].status == "Available") {
-                btn.style.backgroundColor = "green"
+                btn.style.backgroundColor = "#dfa754"
             }
             btn.textContent = data[i].seat_number;
             li.appendChild(btn);
