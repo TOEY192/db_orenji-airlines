@@ -94,7 +94,6 @@ app.post("/login", async (req, res) => {
 })
 
 const jwt = require('jsonwebtoken');
-const { result, constant } = require('lodash');
 
 // REGISTER API
 app.post("/register", (req, res) => {
@@ -204,6 +203,16 @@ app.post('/edit-email', authenticateToken, async (req, res) => {
     res.json(updateFname)
 })
 
+app.post('/edit-profile', authenticateToken, async (req, res) => {
+    const { table } = req.query;
+    const { info } = req.body
+    const username = req.user.username;
+    console.log(table)
+
+    // const sql = 'UPDATE users SET ? = ? WHERE username = ?'
+    // const update = await connection.promise().query(sql, [table, info, username])
+    res.json(update)
+})
 
 
 ///////////////////////////
@@ -291,14 +300,11 @@ app.get('/update-flight', async (req, res) => {
     res.send(flights)
 })
 
-
-app.post('/edit-profile', authenticateToken, async (req, res) => {
-    const { table } = req.query;
-    const { info } = req.body
-    const username = req.user.username;
-    console.log(table)
-
-    // const sql = 'UPDATE users SET ? = ? WHERE username = ?'
-    // const update = await connection.promise().query(sql, [table, info, username])
-    res.json(update)
+///////////////////////////
+app.get('/seats', async (req, res) => {
+    const { flight } = req.query
+    const [flight_id] = await connection.promise().query('SELECT flight_id FROM Flights WHERE flight_code = ?', [flight])
+    const sql = 'SELECT seat_number, status FROM Seats WHERE flight_id = ?'
+    const [results] = await connection.promise().query(sql, [flight_id[0].flight_id])
+    res.json(results)
 })
