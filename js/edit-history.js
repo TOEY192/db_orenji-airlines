@@ -48,10 +48,6 @@ document.getElementById('edit-profile-from').addEventListener('submit', async (e
                 body: JSON.stringify({
                     fname: fname
                 })
-            }).then(response => {
-                return response.json();
-            }).then(data => {
-                console.log(data);
             })
         }
 
@@ -66,12 +62,23 @@ document.getElementById('edit-profile-from').addEventListener('submit', async (e
                 body: JSON.stringify({
                     lname: lname
                 })
-            }).then(response => {
-                return response.json();
-            }).then(data => {
-                console.log(data);
             })
         }
+
+        if (email != '') {
+            console.log('update email')
+            await fetch('https://db-orenji-airlines.onrender.com/edit-email', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    email: email
+                })
+            })
+        }
+        alert('อัพเดตข้อมูลเรียบร้อย');
         location.reload();
     } catch (error) {
         console.error("Error update profile:", error);
