@@ -2,91 +2,121 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OrenjiAirlines</title>
-    <link rel="stylesheet" href="style.css"> <!-- คำสั่งนี้จะโหลดไฟล์ style.css -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrenjiAirlines</title>
+  <link rel="stylesheet" href="style.css"> <!-- คำสั่งนี้จะโหลดไฟล์ style.css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script> <!-- โหลดไอคอน Lucide -->
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="#" class="logo">OrenjiAirlines</a>
-        <div class="nav-buttons">
-            <a href="#" id="register-btn" class="register-btn" onclick="openRegisterModal()">register</a>
-            <a href="#" id="login-btn" class="login-btn" onclick="openLoginModal()">login</a>
-            <a href="#" id="logout-btn" class="logout-btn">logout</a>
-        </div>
-    </nav>
+  <nav class="navbar">
+    <a href="#" class="logo">OrenjiAirlines</a>
+    <div class="nav-buttons">
+      <a href="history.html" id="profile-btn" class="profile-btn">
+        <i class="fa-solid fa-user"></i> <!-- ไอคอนรูปคน -->
+      </a>
+      <a href="#" id="register-btn" class="register-btn" onclick="openRegisterModal()">register</a>
+      <a href="#" id="login-btn" class="login-btn" onclick="openLoginModal()">login</a>
+      <a href="#" id="logout-btn" class="logout-btn" onclick="onLogout()">logout</a>
+    </div>
+  </nav>
 
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeRegisterModal()">&times;</span>
-            <h2>Register</h2>
-            <form id="register-container" class="register-container">
-                <input type="text" id="username-register" placeholder="Username" required>
-                <input type="email" id="email-register" placeholder="Email" required>
-                <input type="password" id="password-register" placeholder="Password" required>
-                <div class="new-register"><button type="submit">Register</button></div>
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-register" onclick="closeRegisterModal()">&times;</span>
+      <h2>Register</h2>
 
-            </form>
-        </div>
+      <form id="register-container" class="register-container">
+        <input type="text" id="username-register" placeholder="Username" required>
+        <input type="email" id="email-register" placeholder="Email" required>
+        <input type="password" id="password-register" placeholder="Password" required>
+        <div class="new-register"><button type="submit">Register</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div id="edit-info-Modal" class="modal">
+    <div class="modal-content">
+      <h2>Edit your info</h2>
+
+      <form id="edit-info-container" class="edit-info-container">
+        <input type="text" id="first-name" placeholder="First Name" required>
+        <input type="text" id="last-name" placeholder="Last Name" required>
+        <input type="text" id="passport-number" placeholder="Passport Number" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLoginModal()">&times;</span>
+      <h2>Login</h2>
+      <form id="login-container" class="login-container">
+        <input type="text" id="username-login" placeholder="Username" required>
+        <input type="password" id="password-login" placeholder="Password" required>
+        <br>
+        <a href="#" id="forget-pass" class="forget-pass">forget-password?</a>
+        <div class="new-login"><button type="submit">Login</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="services">
+    <div class="services-content">
+      <div class="services-container">
+        <!-- <a href="#" class="airplane-btn">Book Flight</a> -->
+        <!-- <a href="#" class="hotel-btn">Book Hotel</a>
+        <a href="#" class="rentcar-btn">Rent Car</a> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-container">
+    <div class="slider">
+      <img src="https://ik.imagekit.io/Orenji/default-image.jpg?updatedAt=1740711544692">
+      <img src="https://ik.imagekit.io/Orenji/slide2.jpg?updatedAt=1740852857796">
+    </div>
+    <div class="click-btn"><button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
     </div>
 
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeLoginModal()">&times;</span>
-            <h2>Login</h2>
-            <form id="login-container" class="login-container">
-                <input type="text" id="email-login" placeholder="Email" required>
-                <input type="password" id="password-login" placeholder="Password" required>
-                <br>
-                <a href="#" id="forget-pass" class="forget-pass">forget-password?</a>
-                <div class="new-login"><button type="submit">Login</button></div>
+  </div>
 
+  <div class="search-container">
+    <input type="text" id="from-input" placeholder="จากสนามบิน (ต้นทาง)" oninput="searchFromData()">
+    <ul id="result-from-list" class="dropdown-list1"></ul>
 
+    <input type="text" id="to-input" placeholder="ถึงสนามบิน (ปลายทาง)" oninput="searchDestinationData()">
+    <ul id="result-destination-list" class="dropdown-list2"></ul>
 
-            </form>
-        </div>
+    <input type="date" id="departure-date" placeholder="เลือกวันเดินทาง">
+    <div class="passenger-selector">
+      <label>ผู้ใหญ่:</label>
+      <input type="number" id="adult-count" min="1" value="1">
+
+      <label>เด็ก:</label>
+      <input type="number" id="child-count" min="0" value="0">
     </div>
+    <button id="submit-search-flight" type="submit" onclick="showFlight()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></button>
+  </div>
 
-    <div class="services">
-        <div class="services-content">
-            <div class="services-container">
-                <a href="#" class="airplane-btn">Book Flight</a>
-                <a href="#" class="hotel-btn">Book Hotel</a>
-                <a href="#" class="rentcar-btn">Rent Car</a>
-            </div>
-        </div>
-    </div>
+  <div class="flight" id="flight">
+    <ul id="goWhere" class="flightList"></ul>
+  </div>
 
-    <div class="slider-container">
-        <div class="slider">
-            <img src="https://ik.imagekit.io/Orenji/default-image.jpg?updatedAt=1740711544692">
-            <img src="https://ik.imagekit.io/Orenji/slide2.jpg?updatedAt=1740852857796">
-        </div>
-        <div class="click-btn"><button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="next" onclick="moveSlide(1)">&#10095;</button>
-        </div>
-
-    </div>
-
-    <div class="search-container">
-        <input type="text" id="from-input" placeholder="จากสนามบิน (ต้นทาง)" oninput="searchAirports('from')">
-        <div id="from-suggestions" class="suggestions"></div>
-
-        <input type="text" id="to-input" placeholder="ถึงสนามบิน (ปลายทาง)" oninput="searchAirports('to')">
-        <div id="to-suggestions" class="suggestions"></div>
-    </div>
-
-    <!-- <div id="flightData">กำลังโหลดข้อมูลเที่ยวบิน...</div> -->
+  <!-- <div id="flightData">กำลังโหลดข้อมูลเที่ยวบิน...</div> -->
 
 
-    <script src="script.js"></script>
-    <script src="app.js"></script> <!-- คำสั่งนี้จะโหลดไฟล์ app.js -->
-    <!-- <script src="fetchAirports.js"></script>
+  <script src="app.js"></script> <!-- คำสั่งนี้จะโหลดไฟล์ app.js -->
+  <script src="/js/login-register.js"></script>
+  <script src="/js/searchFlight.js"></script>
+
+  <!-- <script src="fetchAirports.js"></script>
     <script src="flight.js"></script> -->
 
 
 </body>
-
 </html>

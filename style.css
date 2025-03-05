@@ -28,6 +28,7 @@ a {
     left: 0;
     box-sizing: border-box;
     flex-wrap: wrap;
+    z-index: 100;
 }
 
 .logo {
@@ -41,6 +42,26 @@ a {
     display: flex;
     gap: clamp(10px, 2vw, 15px);
     margin-left: auto;
+}
+
+.home-btn {
+    padding: 10px clamp(15px, 3vw, 25px);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+    background-color: var(--white);
+    color: var(--main_color);
+    border: var(--border_btn);
+}
+
+
+.home-btn:hover {
+    background-color: var(--main_color);
+    color: var(--white);
 }
 
 .login-btn,
@@ -60,7 +81,7 @@ a {
     display: none;
 }
 
-.login-btn, 
+.login-btn,
 .logout-btn {
     background-color: var(--white);
     color: var(--main_color);
@@ -176,7 +197,7 @@ a {
     box-sizing: border-box;
 }
 
-.services-content{
+.services-content {
     width: 100%;
     max-width: 800px;
     text-align: center;
@@ -189,7 +210,9 @@ a {
     margin-top: 20px;
 }
 
-.airplane-btn, .hotel-btn, .rentcar-btn {
+.airplane-btn,
+.hotel-btn,
+.rentcar-btn {
     padding: 12px 24px;
     background-color: black;
     color: var(--white);
@@ -201,7 +224,7 @@ a {
     white-space: nowrap;
     font-size: clamp(12px, 1.2vw, 16px);
     width: clamp(80px, 30%, 30px);
-    
+
 }
 
 .airplane-btn:hover {
@@ -233,29 +256,42 @@ a {
 /* Container ที่ใช้จัดวางกลางหน้า */
 .slider-container {
     display: flex;
-    justify-content: center;  /* จัดกลางแนวนอน */
-    align-items: center;      /* จัดกลางแนวตั้ง */
-    height: 40vh;            /* ความสูงเต็มหน้าจอ */
-    width: 100%;              /* ความกว้างเต็มหน้าจอ */
+    justify-content: center;
+    /* จัดกลางแนวนอน */
+    align-items: center;
+    /* จัดกลางแนวตั้ง */
+    height: 40vh;
+    /* ความสูงเต็มหน้าจอ */
+    width: 100%;
+    /* ความกว้างเต็มหน้าจอ */
 }
 
 /* สไลเดอร์ */
 .slider {
-    width: 80%;      /* ขนาดสไลเดอร์เป็น 80% ของความกว้างหน้าจอ */
-    height: 300px;   /* ความสูงคงที่ของสไลเดอร์ */
+    width: 80%;
+    /* ขนาดสไลเดอร์เป็น 80% ของความกว้างหน้าจอ */
+    height: 300px;
+    /* ความสูงคงที่ของสไลเดอร์ */
     overflow: hidden;
     position: relative;
 }
 
 /* ภาพภายในสไลเดอร์ */
 .slider img {
-    width: 100%;      /* กว้างเต็มสไลเดอร์ */
-    height: 100%;     /* สูงเต็มสไลเดอร์ */
-    object-fit: cover; /* คงสัดส่วนและไม่ยืดภาพ */
+    width: 100%;
+    /* กว้างเต็มสไลเดอร์ */
+    height: 100%;
+    /* สูงเต็มสไลเดอร์ */
+    object-fit: cover;
+    /* คงสัดส่วนและไม่ยืดภาพ */
     position: absolute;
+    z-index: 2;
+    margin-top: 10px;
     top: 0;
-    left: 100%;       /* เริ่มจากด้านขวาสุด */
-    transition: left 1s ease-in-out; /* สมูทในการเลื่อนภาพ */
+    left: 100%;
+    /* เริ่มจากด้านขวาสุด */
+    transition: left 1s ease-in-out;
+    /* สมูทในการเลื่อนภาพ */
 }
 
 /* คลาสที่ทำให้ภาพแสดง */
@@ -267,7 +303,8 @@ a {
 .click-btn button {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* จัดตำแหน่งปุ่มให้ตรงกลางในแนวตั้ง */
+    transform: translateY(-50%);
+    /* จัดตำแหน่งปุ่มให้ตรงกลางในแนวตั้ง */
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
@@ -279,70 +316,341 @@ a {
 }
 
 .prev {
-    top:40%;
-    left: 6%; /* ปุ่ม "Previous" อยู่ทางซ้าย */
+    top: 40%;
+    left: 6%;
+    /* ปุ่ม "Previous" อยู่ทางซ้าย */
 }
 
 .next {
-    top:40%;
-    right: 6%; /* ปุ่ม "Next" อยู่ทางขวา */
+    top: 40%;
+    right: 6%;
+    /* ปุ่ม "Next" อยู่ทางขวา */
 }
 
 .click-btn button:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* เปลี่ยนสีเมื่อ hover */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* เปลี่ยนสีเมื่อ hover */
 }
 
 /* กรอบสำหรับทั้งสองช่องค้นหา */
 .search-container {
-    width: 80%; /* ขนาดของกรอบอยู่ที่ 80% ของหน้าจอ */
-    max-width: 500px; /* กำหนดความกว้างสูงสุด */
-    margin: 20px auto; /* จัดกลาง */
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    width: 80%;
+    /* ขนาดของกรอบอยู่ที่ 80% ของหน้าจอ */
+    /*max-width: 700px;)*/
+    /* กำหนดความกว้างสูงสุด */
+    margin: 20px auto;
+    /* จัดกลาง */
     padding: 20px;
-    border: 2px solid var(--main_color); /* กรอบสีหลัก */
-    border-radius: 10px; /* มุมโค้ง */
-    background-color: white; /* สีพื้นหลัง */
-    box-sizing: border-box; /* การตั้งค่า box-sizing เพื่อให้กรอบไม่เกินขนาดที่กำหนด */
+    border: 2px solid var(--main_color);
+    /* กรอบสีหลัก */
+    border-radius: 10px;
+    /* มุมโค้ง */
+    background-color: white;
+    /* สีพื้นหลัง */
+    box-sizing: border-box;
+    /* การตั้งค่า box-sizing เพื่อให้กรอบไม่เกินขนาดที่กำหนด */
+}
+
+#departure-date {
+    height:60px;
+    width: 100%;
+    padding: 12px;
+    margin:12px 0;
+    font-size: 16px;
+    border-radius:5px;
+    box-sizing:border-box;
+    border:2px solid #d3d3d3;
+
+}
+
+#adult-count,
+#child-count {
+    width: 50px
 }
 
 /* ปรับขนาดช่องค้นหา */
-#from-input, #to-input {
-    width: 100%; /* ให้ช่องค้นหากว้างเต็มกรอบ */
-    padding: 12px; /* เพิ่มพื้นที่ภายใน */
+#from-input,
+#to-input {
+    width: 100%;
+    /* ให้ช่องค้นหากว้างเต็มกรอบ */
+    padding: 12px;
+    /* เพิ่มพื้นที่ภายใน */
     margin: 10px 0;
     border-radius: 5px;
     /* border: 1px solid #ccc; เพิ่มขอบบางๆ เพื่อให้ดูพอดี */
     font-size: 16px;
-    outline: none; /* เอาเส้นขอบออกเมื่อโฟกัส */
-    box-sizing: border-box; /* เพิ่ม box-sizing เพื่อจัดการพื้นที่ภายในช่องค้นหา */
+    outline: none;
+    /* เอาเส้นขอบออกเมื่อโฟกัส */
+    box-sizing: border-box;
+    /* เพิ่ม box-sizing เพื่อจัดการพื้นที่ภายในช่องค้นหา */
+    border: 2px solid #d3d3d3;
 }
 
 /* เมื่อโฟกัส ให้เพิ่มเส้นขอบ */
-#from-input:focus, #to-input:focus {
-    border: 2px solid var(--main_color); /* เพิ่มกรอบเมื่อโฟกัส */
-    box-shadow: 0 0 5px rgba(223, 167, 84, 0.5); /* เพิ่มเงาเล็กน้อย */
+#from-input:focus,
+#to-input:focus {
+    border: 2px solid var(--main_color);
+    /* เพิ่มกรอบเมื่อโฟกัส */
+    box-shadow: 0 0 5px rgba(223, 167, 84, 0.5);
+    /* เพิ่มเงาเล็กน้อย */
+}
+
+.profile-btn {
+    align-content: center;
+    font-size: 30px;
+    color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#profile-btn {
+    display: none;
+}
+
+.profile-btn:hover {
+    color: #aaa;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.fa-solid,
+.fas {
+    display: flex;
+}
+
+.fa-user::before {
+    align-content: center;
+}
+
+#edit-info-Modal {
+    display: none;
+}
+
+/* สไตล์ของรายการผลลัพธ์ใน dropdown */
+.dropdown-list1{
+    position: absolute;
+    top: 50%;
+    /* ให้ dropdown อยู่ด้านล่างของ input */
+    left: 0;
+    width: 27%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    /* ซ่อนเมื่อไม่มีผลลัพธ์ */
+    margin-top: 3%px;
+    padding:0;
+    box-sizing: border-box;
+    z-index: 2;
+    /* ให้ dropdown อยู่ด้านหน้า input */
+}
+
+/* สไตล์ของแต่ละรายการ */
+.dropdown-list1 li {
+    padding: 8px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.dropdown-list1 li:hover {
+    background-color: #f0f0f0;
+}
+
+/* แสดง dropdown เมื่อมีผลลัพธ์ */
+.dropdown-list1.show,
+.flight.show {
+    display: block;
+}
+
+/*ส่วน*/
+.dropdown-list2{
+    position: absolute;
+    top: 50%;
+    /* ให้ dropdown อยู่ด้านล่างของ input */
+    left: 0;
+    width: 27%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    /* ซ่อนเมื่อไม่มีผลลัพธ์ */
+    margin-top: 3%;
+    margin-left: 28%;
+    padding:0;
+    box-sizing: border-box;
+    z-index: 2;
+    /* ให้ dropdown อยู่ด้านหน้า input */
+}
+
+/* สไตล์ของแต่ละรายการ */
+.dropdown-list2 li {
+    padding: 8px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.dropdown-list2 li:hover {
+    background-color: #f0f0f0;
+}
+
+/* แสดง dropdown เมื่อมีผลลัพธ์ */
+.dropdown-list2.show,
+.flight.show {
+    display: block;
 }
 
 
 
-/* สไตล์สำหรับคำแนะนำ (suggestions) */
-/* .suggestions {
-    border: 1px solid #ccc;
-    max-height: 200px;
-    overflow-y: auto;
-    position: absolute;
+#submit-search-flight {
     background-color: white;
-    width: 100%;
-    z-index: 1000;
-    margin-top: 5px;
-} */
-
-/* .suggestion-item {
-    padding: 10px;
+    border: none;
     cursor: pointer;
-} */
+}
 
-/* .suggestion-item:hover {
-    background-color: #f0f0f0;
-} */
+#submit-search-flight:hover svg {
+    background-color: white;
+    fill: var(--main_color);
+    border-color: var(--main_color);
+}
+
+#submit-search-flight svg {
+    background-color: var(--main_color);
+    fill: white;
+    height: 26px;
+    padding: 8px;
+    border: 2px solid var(--main_color);
+    border-radius: 4px;
+    transition: .3s ease background-color, .15s ease fill;
+}
 
 
+.flight {
+    margin: auto;
+    width: 80%;
+    height: auto;
+    background-color: var(--main_color);
+    border-radius: 10px;
+    border: 3px solid;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .flight{
+        flex-wrap:wrap;
+    }
+}
+
+.flightList {
+    list-style: none;
+}
+
+.flightList li {
+    display: flex;
+    padding-top: 20px;
+    padding-top: 15px;
+    font-size: 18px;
+}
+
+.flightList button {
+    border-radius: 5px;
+    width: 40%;
+    height: auto;
+    font-size: 16px;
+    margin-top: 4px;
+    margin-right: 35px;
+}
+
+.flightList button:hover {
+    background-color: #aaa;
+}
+
+
+.edit-info-container input,
+.edit-info-container button
+{
+     width: 70%;
+     padding: 12px;
+    margin:10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.edit-info-container button:hover {
+    background-color:#aaa
+}
+
+.body-Modal {
+    background: #ccc;
+    width: 500px;
+    height: 500px;
+    border-radius: 5px;
+    border: 3px solid #000000;
+    margin: 20px;
+    padding: 15px;
+}
+
+.edit-history input,
+.edit-history button {
+    border-radius: 5px;
+    width: 60%;
+    padding: 12px;
+    margin: 10px 0;
+}
+
+.edit-history button:hover {
+    background-color:#aaa
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        flex-wrap: wrap;
+    }
+}
+
+    .edit-info-container input,
+    .edit-info-container button {
+        width: 70%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .edit-info-container button:hover {
+        background-color: #aaa
+    }
+
+    .body-Modal {
+        background: #ccc;
+        width: 500px;
+        height: 500px;
+        border-radius: 5px;
+        border: 3px solid #000000;
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .history {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .edit-history input,
+    .edit-history button {
+        border-radius: 5px;
+        width: 60%;
+        padding: 12px;
+        margin: 10px;
+    }
+
+    .edit-history button:hover {
+        background-color: #aaa
+    }
