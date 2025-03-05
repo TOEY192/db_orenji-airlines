@@ -306,5 +306,5 @@ app.get('/seats', async (req, res) => {
     const [flight_id] = await connection.promise().query('SELECT flight_id FROM Flights WHERE flight_code = ?', [flight])
     const sql = 'SELECT seat_number, status FROM Seats WHERE flight_id = ?'
     const [results] = await connection.promise().query(sql, [flight_id[0].flight_id])
-    res.json(results[0])
+    res.json(results)
 })
