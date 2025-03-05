@@ -663,3 +663,68 @@ a {
     .goog-te-menu-value:hover {
         background-color: #f4f4f4;
     }
+
+    .footer {
+        background-color: #222;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 14px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      
+      .footer-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 10px;
+      }
+      
+      .footer-section {
+        flex: 1;
+        min-width: 200px;
+        margin: 5px;
+      }
+      
+      .footer-section h3 {
+        font-size: 16px;
+        margin-bottom: 3px; /* ลดจาก -20% เป็น 3px เพื่อความสมดุล */
+        color: #f39c12;
+      }
+      
+      .footer-section p {
+        font-size: 13px;
+        line-height: 1.4; /* เพิ่มระยะห่างระหว่างบรรทัด */
+      }
+      
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .footer-section ul li {
+        margin: 5px 0;
+        line-height: 1.5; /* ป้องกันข้อความซ้อนกัน */
+      }
+      
+      .footer-section ul li a {
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 13px;
+      }
+      
+      .footer-section ul li a:hover {
+        color: #f39c12;
+      }
+      
+      .footer-bottom {
+        margin-top: 3px; /* ลดจาก -20px เป็น 3px */
+        border-top: 1px solid #444;
+        font-size: 12px;
+      }
+      
