@@ -19,25 +19,23 @@
         </div>
     </nav>
 
-    <div class="body-Modal">
-        <div class="body-content">
-            <div class="body-container">
-                <h1>Profile</h1>
+    <div class="edit-profile">
+        <h2>แก้ไขประวัติส่วนตัว</h2>
+        <p id="name"></p>
+        <p id="email"></p>
+        <p id="passportNumber"></p>
 
-                <p id="name"></p>
-                <p id="email"></p>
-                <p id="passportNumber"></p>
+        <form>
+            <label for="name">ชื่อจริง-นามสกุล</label>
+            <input type="text" id="name" name="name">
 
-            </div>
-            <div class="history">
-                <form id="edit-history" class="edit-history">
-                    <button type="button">edit</button>
-                    <button type="email">edit</button>
-                    <button type="number">edit</button>
-                    <!-- <button type="submit">Update</button> -->
-                </form>
-            </div>
-        </div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="passport">passportNumber</label>
+            <input type="text" id="passportNumber" name="passportNumber" class="readonly" readonly>
+            <button type="submit">update</button>
+        </form>
     </div>
 
     <script src="/js/edit-history.js"></script>

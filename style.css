@@ -539,14 +539,6 @@ a {
     transition: .3s ease background-color, .15s ease fill;
 }
 
-.edit-history input,
-.edit-history button {
-    border-radius: 5px;
-    width: 60%;
-    padding: 12px;
-    margin: 10px 0;
-}
-
 .flight {
     margin: auto;
     width: 80%;
@@ -587,7 +579,6 @@ a {
     background-color: #aaa;
 }
 
-
 .edit-info-container input,
 .edit-info-container button
 {
@@ -599,28 +590,6 @@ a {
 }
 
 .edit-info-container button:hover {
-    background-color:#aaa
-}
-
-.body-Modal {
-    background: #ccc;
-    width: 500px;
-    height: 500px;
-    border-radius: 5px;
-    border: 3px solid #000000;
-    margin: 20px;
-    padding: 15px;
-}
-
-.edit-history input,
-.edit-history button {
-    border-radius: 5px;
-    width: 60%;
-    padding: 12px;
-    margin: 10px 0;
-}
-
-.edit-history button:hover {
     background-color:#aaa
 }
 
@@ -643,30 +612,42 @@ a {
         background-color: #aaa
     }
 
-    .body-Modal {
-        background: #ccc;
-        width: 500px;
-        height: 500px;
+    .edit-profile {
+        max-width: 500px;
+        margin: auto;
+        background: var(--white);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .edit-profile label {
+        font-weight: bold;
+    }
+
+    .edit-profile input {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 15px;
+        border: 1px solid #ccc;
         border-radius: 5px;
-        border: 3px solid #000000;
-        margin: 20px;
-        padding: 15px;
     }
 
-    .history {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
+    .readonly {
+        background-color: #e9e9e9;
+        cursor: not-allowed;
     }
 
-    .edit-history input,
-    .edit-history button {
+    .edit-profile button {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
         border-radius: 5px;
-        width: 60%;
-        padding: 12px;
-        margin: 10px;
+        cursor: pointer;
     }
 
-    .edit-history button:hover {
-        background-color: #aaa
+    .edit-profile button:hover {
+        background: #0056b3;
     }
