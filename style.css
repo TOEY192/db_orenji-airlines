@@ -28,7 +28,7 @@ a {
     left: 0;
     box-sizing: border-box;
     flex-wrap: wrap;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .logo {
@@ -650,4 +650,16 @@ a {
 
     .edit-profile button:hover {
         background: #0056b3;
+    }
+
+        /* เพิ่มสไตล์ให้กับปุ่ม */
+    #google_translate_element {
+        margin-top: 20px;
+    }
+    .goog-te-menu-value {
+        color: #333;
+        font-size: 16px;
+    }
+    .goog-te-menu-value:hover {
+        background-color: #f4f4f4;
     }

@@ -13,6 +13,11 @@
             <a href="index.html" id="home-btn" class="home-btn">Home</a>
         </div>
     </nav>
+<<<<<<< HEAD
+    <div>
+        <h3>flight code : </h3>
+        <p id="code"></p>
+=======
 
     <h1>flight : <div id="code"></div></h1>
     <div class="seat-selection">
@@ -47,7 +52,22 @@
         <div class="payment">
             <button id="pay-button">Proceed to Payment</button>
         </div>
+>>>>>>> 90cc19866c03c440711211fd3b185515dab1150f
     </div>
+
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',  // ภาษาเริ่มต้นของหน้าเว็บ
+                includedLanguages: 'en,es,fr,de,th,it,ja,zh-CN,ko,ru,pt,pl,ar,sv,da,fi,hi,hu,id,ms,nl,no,ro,sk,tr,uk,vi,zh-TW,cs,el,he,hr,bn,fa,ml,ta,te,ur',
+                layout: google.translate.TranslateElement.InlineLayout.HIDDEN,  // ซ่อนโลโก้ของ Google Translate
+                autoDisplay: false  // ปิดการแสดงแบบอัตโนมัติ
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script src="/js/booking-pay.js"></script>
 </body>
