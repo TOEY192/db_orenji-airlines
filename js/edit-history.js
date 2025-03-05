@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const token = localStorage.getItem('token');
