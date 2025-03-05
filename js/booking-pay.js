@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const fclass = document.getElementById('first-class');
         const bclass = document.getElementById('business-class');
+        const eclass = document.getElementById('eco-class');
         fclass.innerHTML = "";
         for(let i = 0; i < 5; i++) {
             let li = document.createElement("li");
@@ -24,6 +25,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             btn.textContent = data[i].seat_number;
             li.appendChild(btn);
             bclass.appendChild(li)
+        }
+
+        for(let i = 13; i < 20; i++) {
+            let li = document.createElement("li");
+            let btn = document.createElement("button")
+            btn.textContent = data[i].seat_number;
+            li.appendChild(btn);
+            eclass.appendChild(li)
         }
     } catch (error) {
         console.error("Error :", error);
