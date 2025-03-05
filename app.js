@@ -196,7 +196,17 @@ app.post('/edit-lname', authenticateToken, async (req, res) => {
     res.json(updateFname)
 })
 
+app.post('/edit-email', authenticateToken, async (req, res) => {
+    const username = req.user.username;
+    const { email } = req.body;
+    const sql = 'UPDATE users SET email = ? WHERE username = ?'
+    const updateFname = await connection.promise().query(sql, [email, username])
+    res.json(updateFname)
+})
 
+
+
+///////////////////////////
 //ขั้นตอน booking เลือกว่าจะไปไหน แล้วเลือกจำนวนคน แล้วเลือกเที่ยวบิน และเลือกชั้น และราคาจะแสดออกมา
 app.post('/booking', (req, res) => {
     const { user_id, flight_id, child, adult, total_price } = req.body
