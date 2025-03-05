@@ -264,3 +264,14 @@ app.get('/update-flight', async (req, res) => {
     })
     res.send(flights)
 })
+
+
+app.post('/edit-profile', authenticateToken, async (req, res) => {
+    const { table } = req.query;
+    const { info } = req.body
+    const username = req.user.username;
+
+    const sql = 'UPDATE users SET ? = ? WHERE username = ?'
+    const update = await connection.promise().query(sql, [table, info, username])
+    res.json(update)
+})
