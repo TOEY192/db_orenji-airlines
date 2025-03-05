@@ -110,6 +110,11 @@ async function showFlight() {
                 let btn = document.createElement("button");
                 btn.textContent = "choose this flight";
                 li.textContent = flight.flight_code + " departure_time: " + flight.departure_time + " arrival_time: " + flight.arrival_time;
+
+                btn.addEventListener("click", () => {
+                    window.location.href = `seatAndpay.html?flight_code=${encodeURIComponent(flight.flight_code)}`;
+                });
+
                 li.appendChild(btn)
                 ul.appendChild(li);
             });
