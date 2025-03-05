@@ -233,25 +233,14 @@ app.get('/show-airports', (req, res) => {
 app.get("/search", (req, res) => {
     let searchQuery = req.query.q;
     console.log(searchQuery);
-    if(searchQuery != '') {
-        let sql = "SELECT * FROM Airports WHERE name LIKE ? LIMIT 10"; // จำกัดผลลัพธ์
-        connection.query(sql, [`%${searchQuery}%`], (err, results) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({ error: "Database error" });
-            }
-            res.json(results);
-        });
-    }
-    else {
-        const sql = 'SELECT * FROM Airports'
-        connection.query(sql, (err, results) => {
+    let sql = "SELECT * FROM Airports WHERE name LIKE ? LIMIT 10"; // จำกัดผลลัพธ์
+    connection.query(sql, [`%${searchQuery}%`], (err, results) => {
         if (err) {
-            return res.status(500).send(err);
+            console.error(err);
+            return res.status(500).json({ error: "Database error" });
         }
         res.json(results);
-        })
-    }
+    });
 });
 
 app.get('/show-flight', async (req, res) => {
