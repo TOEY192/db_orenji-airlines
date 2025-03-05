@@ -462,7 +462,8 @@ a {
 }
 
 /* แสดง dropdown เมื่อมีผลลัพธ์ */
-.show {
+.dropdown-list.show,
+.flight.show {
     display: block;
 }
 
@@ -496,6 +497,7 @@ a {
     background-color: var(--main_color);
     border-radius: 10px;
     border: 3px solid;
+    display: none;
 }
 
 @media (max-width: 768px) {
