@@ -11,18 +11,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                 "Authorization": `Bearer ${token}` // ถ้ามีระบบ Auth
             }
         })
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            console.log(data)
-            console.log(data[0].firstName)
-            console.log(data[0].lastName)
-            document.getElementById('fname').placeholder = data[0].firstName;
-            document.getElementById('lname').placeholder = data[0].lastName;
-            document.getElementById('email').placeholder = data[0].email;
-            document.getElementById('passportNumber').placeholder = data[0].passportNumber;
-        })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data)
+                console.log(data[0].firstName)
+                console.log(data[0].lastName)
+                document.getElementById('fname').placeholder = data[0].firstName;
+                document.getElementById('lname').placeholder = data[0].lastName;
+                document.getElementById('email').placeholder = data[0].email;
+                document.getElementById('passportNumber').placeholder = data[0].passportNumber;
+            })
     } catch (error) {
         console.error("Error loading profile:", error);
     }
@@ -36,8 +36,8 @@ document.getElementById('edit-profile-from').addEventListener('submit', async (e
         const lname = document.querySelector("[name='lname']").value;
         const email = document.querySelector("[name='email']").value;
 
-        console.log(fname, lname , email)
-        if(fname != '') {
+        console.log(fname, lname, email)
+        if (fname != '') {
             console.log('update fname')
             await fetch('https://db-orenji-airlines.onrender.com/edit-fname', {
                 method: "POST",
@@ -49,16 +49,30 @@ document.getElementById('edit-profile-from').addEventListener('submit', async (e
                     fname: fname
                 })
             }).then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    console.log(data);
-                })
+                return response.json();
+            }).then(data => {
+                console.log(data);
+            })
         }
 
-        if(lname){
-
+        if (lname != '') {
+            console.log('update lname')
+            await fetch('https://db-orenji-airlines.onrender.com/edit-lname', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    lname: lname
+                })
+            }).then(response => {
+                return response.json();
+            }).then(data => {
+                console.log(data);
+            })
         }
+        location.reload();
     } catch (error) {
         console.error("Error update profile:", error);
     }
