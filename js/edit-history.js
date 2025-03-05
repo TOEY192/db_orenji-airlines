@@ -15,13 +15,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             return response.json();
         })
         .then(data => {
-            console.log(data)
-            console.log(data[0].firstName)
-            console.log(data[0].lastName)
-            document.getElementById('name').innerHTML = data[0].firstName + " " + data[0].lastName;
-            document.getElementById('email').innerHTML = data[0].email;
-            document.getElementById('passportNumber').innerHTML = data[0].passportNumber;
-        })
+            console.log(data);
+            console.log(data[0].firstName);
+            console.log(data[0].lastName);
+            document.getElementById('name').value = data[0].firstName + " " + data[0].lastName;
+    document.getElementById('email').value = data[0].email;
+    document.getElementById('passportNumber').value = data[0].passportNumber;
+})
 
         // นำข้อมูลมาใส่ใน placeholder
 
