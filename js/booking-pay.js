@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         fclass.innerHTML = "";
         for(let i = 0; i < 5; i++) {
             let li = document.createElement("li");
-            li.textContent = data[i].seat_number
+            let btn = document.createElement("button")
+            btn.textContent = data[i].seat_number;
+            li.appendChild(btn);
             fclass.appendChild(li)
         }
     } catch (error) {
