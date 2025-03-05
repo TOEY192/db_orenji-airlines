@@ -670,8 +670,6 @@ a {
         padding: 10px 0;
         text-align: center;
         font-size: 14px;
-        position: fixed;
-        bottom: 0;
         width: 100%;
       }
       
@@ -692,13 +690,13 @@ a {
       
       .footer-section h3 {
         font-size: 16px;
-        margin-bottom: 3px; /* ลดจาก -20% เป็น 3px เพื่อความสมดุล */
+        margin-bottom: 3px;
         color: #f39c12;
       }
       
       .footer-section p {
         font-size: 13px;
-        line-height: 1.4; /* เพิ่มระยะห่างระหว่างบรรทัด */
+        line-height: 1.4;
       }
       
       .footer-section ul {
@@ -708,7 +706,7 @@ a {
       
       .footer-section ul li {
         margin: 5px 0;
-        line-height: 1.5; /* ป้องกันข้อความซ้อนกัน */
+        line-height: 1.5;
       }
       
       .footer-section ul li a {
@@ -723,7 +721,7 @@ a {
       }
       
       .footer-bottom {
-        margin-top: 3px; /* ลดจาก -20px เป็น 3px */
+        margin-top: 3px;
         border-top: 1px solid #444;
         font-size: 12px;
       }
