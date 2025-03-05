@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const flightCode = urlParams.get('flight_code');
         console.log(flightCode)
         document.getElementById('code').innerHTML = flightCode;
-        let response = await fetch('https://db-orenji-airlines.onrender.com/seats');
+        let response = await fetch(`https://db-orenji-airlines.onrender.com/seats?flight=${flightCode}`);
         let data = await response.json();
 
         const fclass = document.getElementById('first-class');
