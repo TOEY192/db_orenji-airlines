@@ -247,6 +247,8 @@ function moveSlide(direction) {
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
+        document.body.style.minHeight = '';
+        document.body.style.top = '';
         console.log("Update flights")
         await fetch("https://db-orenji-airlines.onrender.com/update-flight", {
             method: "GET",

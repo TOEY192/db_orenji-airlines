@@ -288,16 +288,17 @@ app.get('/show-flight', async (req, res) => {
 
 app.get('/update-flight', async (req, res) => {
     const currentTime = moment().tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss');
-    const sql = 'SELECT flight_code, departure_time, arrival_time FROM Flights WHERE arrival_time <= ?';
+    const sql = 'SELECT flight_id, flight_code, departure_time, arrival_time FROM Flights WHERE arrival_time <= ?';
     const [flights] = await connection.promise().query(sql, [currentTime])
     flights.forEach(async flight => {
         const newDepartureTime = moment(flight.departure_time).add(2, 'weeks').format('YYYY-MM-DD HH:mm:ss');
         const newArrivalTime = moment(flight.arrival_time).add(2, 'weeks').format('YYYY-MM-DD HH:mm:ss');
         const sqlUpdate = 'UPDATE Flights SET departure_time = ?, arrival_time = ? WHERE flight_code = ?'
         const newUpdate = await connection.promise().query(sqlUpdate, [newDepartureTime, newArrivalTime, flight.flight_code])
-        console.log(newUpdate)
+        const sqlUpdateSeat = 'UPDATE Seats SET status = "Available" WHERE flight_id = ?'
+        const updateSeat = await connection.promise().query(sqlUpdateSeat, [flight.flight_id])
     })
-    res.send(flights)
+    res.json({msg: "update success"})
 })
 
 ///////////////////////////
