@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.log(data)
             console.log(data[0].firstName)
             console.log(data[0].lastName)
-            document.getElementById('name').placeholder = data[0].firstName + " " + data[0].lastName;
+            document.getElementById('fname').placeholder = data[0].firstNamedata[0].lastName;
+            document.getElementById('lname').placeholder = data[0].lastName;
             document.getElementById('email').placeholder = data[0].email;
             document.getElementById('passportNumber').placeholder = data[0].passportNumber;
         })
