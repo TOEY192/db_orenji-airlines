@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 document.getElementById('edit-profile-from').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const name = document.getElementById('name').value.split('');
+    const name = document.getElementById('name').value.split(" ");
     const email = document.getElementById('email').value;
     console.log(name , email)
 })
