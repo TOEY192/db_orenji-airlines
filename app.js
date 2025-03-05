@@ -270,8 +270,9 @@ app.post('/edit-profile', authenticateToken, async (req, res) => {
     const { table } = req.query;
     const { info } = req.body
     const username = req.user.username;
+    console.log(table)
 
-    const sql = 'UPDATE users SET ? = ? WHERE username = ?'
-    const update = await connection.promise().query(sql, [table, info, username])
+    // const sql = 'UPDATE users SET ? = ? WHERE username = ?'
+    // const update = await connection.promise().query(sql, [table, info, username])
     res.json(update)
 })
