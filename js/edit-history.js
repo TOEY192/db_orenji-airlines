@@ -29,3 +29,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Error loading profile:", error);
     }
 });
+
+document.getElementById('edit-profile-from').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const name = document.getElementById('name').value.split('');
+    const email = document.getElementById('email').value;
+    console.log(name , email)
+})
