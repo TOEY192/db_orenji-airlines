@@ -48,13 +48,12 @@ document.getElementById('edit-profile-from').addEventListener('submit', async (e
                 body: JSON.stringify({
                     fname: fname
                 })
-                .then(response => {
+            }).then(response => {
                     return response.json();
                 })
                 .then(data => {
                     console.log(data);
                 })
-            })
         }
 
         if(lname){
