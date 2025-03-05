@@ -4,21 +4,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         const flightCode = urlParams.get('flight_code');
         console.log(flightCode)
         document.getElementById('code').innerHTML = flightCode;
+        let response = await fetch('https://db-orenji-airlines.onrender.com/seats');
+        let data = await response.json();
 
-        await fetch('https://db-orenji-airlines.onrender.com/seats', {
-            method: 'GET'
-        })
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
+        const fclass = document.getElementById('first-class');
+        for(let i = 0; i < 5; i++) {
             let li = document.createElement("li");
-            const fclass = document.getElementById('first-class');
-            for(let i = 0; i < 5; i++) {
-                li.textContent = data.seat_number
-                fclass.appendChild(li)
-            }
-        })
+            li.textContent = data.seat_number
+            fclass.appendChild(li)
+        }
     } catch (error) {
         console.error("Error :", error);
     }
