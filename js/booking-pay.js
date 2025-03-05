@@ -8,13 +8,40 @@ document.addEventListener("DOMContentLoaded", async () => {
         let data = await response.json();
 
         const fclass = document.getElementById('first-class');
+        const bclass = document.getElementById('business-class');
+        const eclass = document.getElementById('eco-class');
         fclass.innerHTML = "";
         for(let i = 0; i < 5; i++) {
             let li = document.createElement("li");
             let btn = document.createElement("button")
+            if(data[i].status == "Available") {
+                btn.style.backgroundColor = "#dfa754"
+            }
             btn.textContent = data[i].seat_number;
             li.appendChild(btn);
             fclass.appendChild(li)
+        }
+
+        for(let i = 5; i < 13; i++) {
+            let li = document.createElement("li");
+            let btn = document.createElement("button")
+            if(data[i].status == "Available") {
+                btn.style.backgroundColor = "#dfa754"
+            }
+            btn.textContent = data[i].seat_number;
+            li.appendChild(btn);
+            bclass.appendChild(li)
+        }
+
+        for(let i = 13; i < 20; i++) {
+            let li = document.createElement("li");
+            let btn = document.createElement("button")
+            if(data[i].status == "Available") {
+                btn.style.backgroundColor = "#dfa754"
+            }
+            btn.textContent = data[i].seat_number;
+            li.appendChild(btn);
+            eclass.appendChild(li)
         }
     } catch (error) {
         console.error("Error :", error);
