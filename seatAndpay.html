@@ -13,65 +13,25 @@
             <a href="index.html" id="home-btn" class="home-btn">Home</a>
         </div>
     </nav>
-<<<<<<< HEAD
-
-    <div class="seat-selection">
-        <h1>Select Your Seat</h1>
-
-        <!-- First Class Section -->
-        <h2>First Class (5 Seats)</h2>
-        <div class="seats first-class">
-            <button class="seat" id="seat-1">1</button>
-            <button class="seat" id="seat-2">2</button>
-            <button class="seat" id="seat-3">3</button>
-            <button class="seat" id="seat-4">4</button>
-            <button class="seat" id="seat-5">5</button>
-        </div>
-
-        <!-- Business Class Section -->
-        <h2>Business Class (7 Seats)</h2>
-        <div class="seats business-class">
-            <button class="seat" id="seat-6">6</button>
-            <button class="seat" id="seat-7">7</button>
-            <button class="seat" id="seat-8">8</button>
-            <button class="seat" id="seat-9">9</button>
-            <button class="seat" id="seat-10">10</button>
-            <button class="seat" id="seat-11">11</button>
-            <button class="seat" id="seat-12">12</button>
-        </div>
-
-        <!-- Eco Class Section -->
-        <h2>Eco Class (8 Seats)</h2>
-        <div class="seats eco-class">
-            <button class="seat" id="seat-13">13</button>
-            <button class="seat" id="seat-14">14</button>
-            <button class="seat" id="seat-15">15</button>
-            <button class="seat" id="seat-16">16</button>
-            <button class="seat" id="seat-17">17</button>
-            <button class="seat" id="seat-18">18</button>
-            <button class="seat" id="seat-19">19</button>
-            <button class="seat" id="seat-20">20</button>
-        </div>
-
-        <div class="selected-seats">
-            <h2>Selected Seats</h2>
-            <ul id="selected-seats-list">
-                <!-- List of selected seats will appear here -->
-            </ul>
-            <p id="total-price">Total: $0</p>
-        </div>
-
-        <div class="payment">
-            <button id="pay-button">Proceed to Payment</button>
-        </div>
-    </div>
-=======
     <div>
         <h3>flight code : </h3>
         <p id="code"></p>
     </div>
 
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',  // ภาษาเริ่มต้นของหน้าเว็บ
+                includedLanguages: 'en,es,fr,de,th,it,ja,zh-CN,ko,ru,pt,pl,ar,sv,da,fi,hi,hu,id,ms,nl,no,ro,sk,tr,uk,vi,zh-TW,cs,el,he,hr,bn,fa,ml,ta,te,ur',
+                layout: google.translate.TranslateElement.InlineLayout.HIDDEN,  // ซ่อนโลโก้ของ Google Translate
+                autoDisplay: false  // ปิดการแสดงแบบอัตโนมัติ
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script src="/js/booking-pay.js"></script>
->>>>>>> ecd2a455e18a1b2ff75a8ad8080c42362436800c
 </body>
 </html>

@@ -40,6 +40,20 @@
         </form>
     </div>
 
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',  // ภาษาเริ่มต้นของหน้าเว็บ
+                includedLanguages: 'en,es,fr,de,th,it,ja,zh-CN,ko,ru,pt,pl,ar,sv,da,fi,hi,hu,id,ms,nl,no,ro,sk,tr,uk,vi,zh-TW,cs,el,he,hr,bn,fa,ml,ta,te,ur',
+                layout: google.translate.TranslateElement.InlineLayout.HIDDEN,  // ซ่อนโลโก้ของ Google Translate
+                autoDisplay: false  // ปิดการแสดงแบบอัตโนมัติ
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script src="/js/edit-history.js"></script>
 </body>
 
