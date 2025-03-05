@@ -430,12 +430,12 @@ a {
 }
 
 /* สไตล์ของรายการผลลัพธ์ใน dropdown */
-.dropdown-list {
+.dropdown-list1{
     position: absolute;
     top: 50%;
     /* ให้ dropdown อยู่ด้านล่างของ input */
     left: 0;
-    width: 100%;
+    width: 27%;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -444,27 +444,77 @@ a {
     display: none;
     /* ซ่อนเมื่อไม่มีผลลัพธ์ */
     margin-top: 3%px;
-    padding: 0;
+    padding:0;
     box-sizing: border-box;
     z-index: 2;
     /* ให้ dropdown อยู่ด้านหน้า input */
 }
 
 /* สไตล์ของแต่ละรายการ */
-.dropdown-list li {
+.dropdown-list1 li {
     padding: 8px;
     cursor: pointer;
     list-style: none;
 }
 
-.dropdown-list li:hover {
+.dropdown-list1 li:hover {
     background-color: #f0f0f0;
 }
 
 /* แสดง dropdown เมื่อมีผลลัพธ์ */
-.dropdown-list.show,
+.dropdown-list1.show,
 .flight.show {
     display: block;
+}
+
+/*ส่วน*/
+.dropdown-list2{
+    position: absolute;
+    top: 50%;
+    /* ให้ dropdown อยู่ด้านล่างของ input */
+    left: 0;
+    width: 27%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    /* ซ่อนเมื่อไม่มีผลลัพธ์ */
+    margin-top: 3%;
+    margin-left: 28%;
+    padding:0;
+    box-sizing: border-box;
+    z-index: 2;
+    /* ให้ dropdown อยู่ด้านหน้า input */
+}
+
+/* สไตล์ของแต่ละรายการ */
+.dropdown-list2 li {
+    padding: 8px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.dropdown-list2 li:hover {
+    background-color: #f0f0f0;
+}
+
+/* แสดง dropdown เมื่อมีผลลัพธ์ */
+.dropdown-list2.show,
+.flight.show {
+    display: block;
+}
+
+
+.flight {
+    margin: auto;
+    width: 80%;
+    height: auto;
+    background-color: var(--main_color);
+    border-radius: 10px;
+    border: 3px solid;
+    display: none;
 }
 
 #submit-search-flight {
@@ -489,6 +539,13 @@ a {
     transition: .3s ease background-color, .15s ease fill;
 }
 
+.edit-history input,
+.edit-history button {
+    border-radius: 5px;
+    width: 60%;
+    padding: 12px;
+    margin: 10px 0;
+}
 
 .flight {
     margin: auto;
