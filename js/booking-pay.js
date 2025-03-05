@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             fclass.appendChild(li)
         }
 
-        for(let i = 5; i < 13; i++) {
+        for(let i = 5; i < 12; i++) {
             let li = document.createElement("li");
             let btn = document.createElement("button")
             if(data[i].status == "Available") {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             bclass.appendChild(li)
         }
 
-        for(let i = 13; i < 20; i++) {
+        for(let i = 12; i < 20; i++) {
             let li = document.createElement("li");
             let btn = document.createElement("button")
             if(data[i].status == "Available") {
