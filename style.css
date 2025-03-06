@@ -793,3 +793,12 @@ a {
       #pay-button:hover {
         background: #e55b00;
     }
+
+    .flight-code{
+        text-align: center;
+    }
+
+    .head-select {
+        text-align: center;
+        color: #333;
+    }
